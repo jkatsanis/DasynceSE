@@ -24,7 +24,7 @@ void s2d::GameEngine::pollEngineEvents()
 	for (int i = 0; i < this->m_sprite_repository.amount(); i++)
 	{
 		s2d::Sprite* const sprite = this->m_sprite_repository.readAt(i);
-		if (sprite->transform.position != sprite->transform.last_pos)
+		if (sprite->transform.getPosition() != sprite->transform.last_pos)
 		{
 #ifdef CHILDSYSTEM
 			Transform::onPositionChange(sprite);
@@ -138,18 +138,18 @@ void s2d::GameEngine::update()
 	// Loading everything for 1s
 	if (s2d::Time::timePassed > 2.5f)
 	{
-#ifdef COLLISION
-		s2d::BoxCollider::checkCollisions(this->m_sprite_repository);
+#ifdef PHYSICS
+		s2d::Physics::update(this->m_sprite_repository);
 #endif
 		this->updateWindowStyle();
 		this->updateUserScriptsAndGUI();
 
-#ifdef ANIMATION
-		s2d::Animation::updateAllAnimations(this->m_sprite_repository);
+#ifdef COLLISION
+		s2d::BoxCollider::checkCollisions(this->m_sprite_repository);
 #endif
 
-#ifdef PHYSICS
-		s2d::Physics::update(this->m_sprite_repository);
+#ifdef ANIMATION
+		s2d::Animation::updateAllAnimations(this->m_sprite_repository);
 #endif
 
 #ifdef CAMERA

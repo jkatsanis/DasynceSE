@@ -344,8 +344,8 @@ void s2d::Initializer::initSprite(const std::string& line, s2d::Sprite* sprite)
 	sprite->prefab = s2d::Prefab(sprite);
 
 	sprite->name = propertys[0];
-	sprite->transform.position.x = std::stof(propertys[2].c_str());
-	sprite->transform.position.y = std::stof(propertys[3].c_str());
+	const s2d::Vector2 position = s2d::Vector2(std::stof(propertys[2].c_str()), std::stof(propertys[3].c_str()));
+	sprite->transform.setPosition(position);
 
 	sprite->setSpriteTexture(propertys[6], s2d::Vector2(s2d::Vector2(std::stof(propertys[4].c_str()), std::stof(propertys[5].c_str()))));
 
@@ -396,5 +396,9 @@ void s2d::Initializer::initSprite(const std::string& line, s2d::Sprite* sprite)
 # pragma region Prefab
 	sprite->prefab.exist = propertys[29] == "True";
 	sprite->prefab.load_in_memory = propertys[30] == "True";
+#pragma endregion
+
+#pragma region General
+	sprite->tag = propertys[32];
 #pragma endregion
 }

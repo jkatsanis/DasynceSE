@@ -102,9 +102,6 @@
     <ClCompile Include="engine\src\spriteComponents\boxCollider.cpp">
       <Filter>engine src\spriteComponents\boxCollider</Filter>
     </ClCompile>
-    <ClCompile Include="engine\src\spriteComponents\boxColliderPositionData.cpp">
-      <Filter>engine src\spriteComponents\boxCollider</Filter>
-    </ClCompile>
     <ClCompile Include="engine\src\physicalComponents\camera.cpp">
       <Filter>engine src\physicalComponents\camera</Filter>
     </ClCompile>
@@ -502,9 +499,6 @@
     </ClInclude>
     <ClInclude Include="engine\src\spriteComponents\physicsBody.h">
       <Filter>engine src\spriteComponents\physicBody</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\src\spriteComponents\boxColliderPositionData.h">
-      <Filter>engine src\spriteComponents\boxCollider</Filter>
     </ClInclude>
     <ClInclude Include="engine\src\spriteComponents\boxCollider.h">
       <Filter>engine src\spriteComponents\boxCollider</Filter>

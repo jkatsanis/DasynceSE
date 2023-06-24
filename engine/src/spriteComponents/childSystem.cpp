@@ -5,7 +5,7 @@ void s2d::ChildSystem::updatePositionToParent(s2d::Sprite* child)
 {
 	if (child->parent != nullptr)
 	{
-		s2d::Vector2 distance = s2d::Vector2(child->parent->transform.position - child->transform.position);
+		s2d::Vector2 distance = s2d::Vector2(child->parent->transform.getPosition() - child->transform.getPosition());
 		child->transform.position_to_parent = distance;
 	}
 }
@@ -14,8 +14,9 @@ void s2d::ChildSystem::updateChildPositionRecursivly(s2d::Sprite* parent)
 {
 	for (s2d::Sprite* child : parent->ptr_childs)
 	{
-		child->transform.position = parent->transform.position - child->transform.position_to_parent;
-		s2d::Vector2 distance = s2d::Vector2(parent->transform.position - child->transform.position);
+		s2d::Vector2 p = parent->transform.getPosition() - child->transform.position_to_parent;
+		child->transform.setPosition(p);
+		s2d::Vector2 distance = s2d::Vector2(parent->transform.getPosition() - child->transform.getPosition());
 		child->transform.position_to_parent = distance;
 
 		updateChildPositionRecursivly(child);
@@ -30,13 +31,14 @@ void s2d::ChildSystem::updatePositionRevursivWhenChildIsColliding(s2d::Sprite* c
 	for (s2d::Sprite* node : child->ptr_childs)
 	{
 		setBoxColliderPosition(node, child);
+		updatePositionRevursivWhenChildIsColliding(node);
 	}
 }
 
 
 void s2d::ChildSystem::resetPositionWhenChildIsColliding(s2d::Sprite* child)
 {
-	if (!child->collider.isInCollision())
+	if (!child->collider.collided)
 	{
 		return;
 	}
@@ -50,14 +52,8 @@ void s2d::ChildSystem::resetPositionWhenChildIsColliding(s2d::Sprite* child)
 
 void s2d::ChildSystem::setBoxColliderPosition(s2d::Sprite* child, s2d::Sprite* node)
 {
-	for (int i = 0; i < s2d::BoxColliderPositionData::s_canCollideSpritesAround; i++)
-	{
-		s2d::BoxColliderPositionData::Position data = static_cast<s2d::BoxColliderPositionData::Position>(static_cast<int>(i));
-		if (child->collider.position_data.isEqual(data))
-		{
-			//A sprite can collidde from left and one from up, we need to not go RIGHT AND DOWN 
-			node->collider.position_data.position[node->collider.collision_cnt] = data;
-			node->collider.collision_cnt++;
-		}
-	}
+	child->collider.left = node->collider.left;
+	child->collider.right = node->collider.right;
+	child->collider.up = node->collider.up;
+	child->collider.down = node->collider.down;
 }
