@@ -139,11 +139,13 @@ void s2d::Transform::pushSetup()
 {
 	this->pushSpriteFromCollider(s2d::BoxColliderPositionData::Right, false, this->position.x, this->next_pos.x, this->last_pos.x);
 	this->pushSpriteFromCollider(s2d::BoxColliderPositionData::Left, true, this->position.x, this->next_pos.x, this->last_pos.x);
-	this->pushSpriteFromCollider(s2d::BoxColliderPositionData::Down, true, this->position.y, this->next_pos.y, this->last_pos.y);
 	this->pushSpriteFromCollider(s2d::BoxColliderPositionData::Up, false, this->position.y, this->next_pos.y, this->last_pos.y);
+
+	if(this->m_attached_sprite->physicsBody.velocity.y <= 0)
+		this->pushSpriteFromCollider(s2d::BoxColliderPositionData::Down, true, this->position.y, this->next_pos.y, this->last_pos.y);
 }
 
-void s2d::Transform::pushSpriteFromCollider(s2d::BoxColliderPositionData::Position p, bool smaller, float& tXY, float& lXY, float& nXY)
+void s2d::Transform::pushSpriteFromCollider(s2d::BoxColliderPositionData::Position p, bool smaller, float& tXY, float& nXY, float& lXY)
 {
 	if (!smaller)
 	{
@@ -153,8 +155,9 @@ void s2d::Transform::pushSpriteFromCollider(s2d::BoxColliderPositionData::Positi
 			if (tXY > lXY)
 			{
 				//Swap lol
+				float temp = tXY;
 				tXY = lXY;
-				lXY = nXY;
+				lXY = temp;
 				nXY = tXY;
 			}
 		}
@@ -164,8 +167,9 @@ void s2d::Transform::pushSpriteFromCollider(s2d::BoxColliderPositionData::Positi
 	{
 		if (tXY < lXY)
 		{
+			float temp = tXY;
 			tXY = lXY;
-			lXY = nXY;
+			lXY = temp;
 			nXY = tXY;
 		}
 	}

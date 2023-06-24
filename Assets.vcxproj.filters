@@ -85,14 +85,17 @@
     <Filter Include="engine src\_header\_include\sfml">
       <UniqueIdentifier>{52e0bfb6-0af9-4241-bfb2-e2e8c85df5bd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="engine src\_header\_include\sfml\physics">
-      <UniqueIdentifier>{bb05d042-7677-4bcd-8012-ff0437c43202}</UniqueIdentifier>
-    </Filter>
     <Filter Include="engine src\_header\_include\imgui">
       <UniqueIdentifier>{a310bcee-c8a2-444b-96c7-431a9d514a99}</UniqueIdentifier>
     </Filter>
     <Filter Include="engine src\spriteComponents\prefab">
       <UniqueIdentifier>{71b7b4eb-79ba-4b79-b4bd-09a481db91f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gamesrc\player">
+      <UniqueIdentifier>{3b545a4a-2ff1-4a18-9ebf-17483c576345}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine src\engineComponents\physics">
+      <UniqueIdentifier>{bb05d042-7677-4bcd-8012-ff0437c43202}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -121,7 +124,7 @@
       <Filter>engine src\physicalComponents\gameObjectParent</Filter>
     </ClCompile>
     <ClCompile Include="engine\src\calculationComponents\physics.cpp">
-      <Filter>engine src\_header\_include\sfml\physics</Filter>
+      <Filter>engine src\engineComponents\physics</Filter>
     </ClCompile>
     <ClCompile Include="engine\src\calculationComponents\vector2.cpp">
       <Filter>engine src\calculationComponents\vector</Filter>
@@ -197,6 +200,9 @@
     </ClCompile>
     <ClCompile Include="engine\src\data\engineConfig.cpp">
       <Filter>engine src\data</Filter>
+    </ClCompile>
+    <ClCompile Include="assets\Scripts\player\playerController.cpp">
+      <Filter>gamesrc\player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -519,7 +525,7 @@
       <Filter>engine src\spriteComponents\transform</Filter>
     </ClInclude>
     <ClInclude Include="engine\src\calculationComponents\physics.h">
-      <Filter>engine src\_header\_include\sfml\physics</Filter>
+      <Filter>engine src\engineComponents\physics</Filter>
     </ClInclude>
     <ClInclude Include="engine\src\calculationComponents\vector2.h">
       <Filter>engine src\calculationComponents\vector</Filter>
@@ -626,6 +632,9 @@
     </ClInclude>
     <ClInclude Include="engine\src\manager\prefabRepository.h">
       <Filter>engine src\manager</Filter>
+    </ClInclude>
+    <ClInclude Include="assets\Scripts\player\playerController.h">
+      <Filter>gamesrc\player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

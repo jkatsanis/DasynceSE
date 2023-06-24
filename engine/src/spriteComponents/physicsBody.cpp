@@ -38,8 +38,8 @@ void s2d::PhsysicsBody::fixedUpdate()
     if (!this->exist || this->ptr_attachedSprite == nullptr || this->gravity == 0) return;
 
 	//ALl Physic calcutions will happen here! -> calle from s2d::physics::update();
-
-    this->ptr_attachedSprite->transform.position += this->velocity * s2d::Time::s_delta_time;
+    const s2d::Vector2 dir = this->velocity * s2d::Time::s_delta_time;
+    this->ptr_attachedSprite->transform.position += dir;
 
     if (this->exist)
     {

@@ -24,7 +24,7 @@ void s2d::GameEngine::pollEngineEvents()
 	for (int i = 0; i < this->m_sprite_repository.amount(); i++)
 	{
 		s2d::Sprite* const sprite = this->m_sprite_repository.readAt(i);
-		if (sprite->transform.position != sprite->transform.next_pos)
+		if (sprite->transform.position != sprite->transform.last_pos)
 		{
 #ifdef CHILDSYSTEM
 			Transform::onPositionChange(sprite);
@@ -186,7 +186,6 @@ void s2d::GameEngine::start()
 	this->m_renderer.setSpriteRepository(this->m_sprite_repository);
 
 	this->m_game.config.ptr_sprites = &this->m_sprite_repository;
-	this->m_sprite_repository.main_content_iniitialied = true;
 
 	//Engine 
 	s2d::Initializer::initScenes(this->m_scene_names);;
@@ -195,6 +194,8 @@ void s2d::GameEngine::start()
 	s2d::Input::setEvent(&this->event);
 
 	this->m_current_scene = s2d::GameData::s_scene;
+	this->m_game.config.setGameEngine(this);
+	this->m_sprite_repository.main_content_iniitialied = true;
 
 	// user code
 	this->m_game.start();
@@ -203,7 +204,7 @@ void s2d::GameEngine::start()
 void s2d::GameEngine::initOtherClasses()
 {
 	s2d::Initializer::initBackground(this->m_renderer.background_color);
-	s2d::Initializer::initIds(this->m_sprite_repository.highestSpriteId);
+	s2d::Initializer::initIds(this->m_sprite_repository.highest_sprite_id);
 	s2d::Initializer::initSprites(this->m_sprite_repository);
 	s2d::Initializer::initAnimations(this->m_sprite_repository);
 }

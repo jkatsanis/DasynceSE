@@ -2,10 +2,12 @@
 
 #include <_header/SpriteEngine.h>
 
+#include <player/playerController.h>
+
 class Game : public s2d::Base
 {
 private:
-	s2d::Sprite* m_ptr_sprite;
+	PlayerController m_controller;
 public:
 	s2d::EngineConfig config;
 
