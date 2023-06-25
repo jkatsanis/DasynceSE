@@ -1,5 +1,5 @@
 PathToAnimation
-assets\player\animations\idle\idle.txt
-assets\player\animations\run\run.txt
 assets\enviroment\sprites\smoker\smoke.txt
 assets\enviroment\sprites\smoker\smoke_small.txt
+assets\player\animations\idle\idle.txt
+assets\player\animations\run\run.txt

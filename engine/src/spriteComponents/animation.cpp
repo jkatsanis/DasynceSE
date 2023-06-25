@@ -205,6 +205,7 @@ void s2d::Animation::updateAllAnimations(s2d::SpriteRepository& repo)
 
 void s2d::Animation::setVectorSizes()
 {
+	this->m_textures.clear();
 	this->m_textures = std::vector<sf::Texture>(this->m_keyframes.size());
 
 	for (int i = 0; i < this->m_keyframes.size(); i++)

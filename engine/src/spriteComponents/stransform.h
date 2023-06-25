@@ -34,9 +34,7 @@ namespace s2d
 		Transform(s2d::Sprite* attachedSprite, s2d::Transform& transform);
 
 		void setPosition(const s2d::Vector2& positon);
-		void setPositionForce(const s2d::Vector2& positon) {
-			this->m_position = positon;
-		}
+		void setPositionForce(const s2d::Vector2& positon) { this->m_position = positon; }
 
 		s2d::Vector2 getPosition() { return this->m_position; }
 

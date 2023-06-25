@@ -21,6 +21,7 @@ private:
 	void leftRight();
 	void jump();
 	void slide();
+	void wallJump();
 
 public:
 	void start(Game& game);

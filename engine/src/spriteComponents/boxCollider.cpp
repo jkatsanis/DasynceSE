@@ -1,7 +1,6 @@
 #include "boxCollider.h"
 #include <physicalComponents/sprite.h>
 
-
 // Constructor / Destructor 
 
 s2d::BoxCollider::BoxCollider()
@@ -19,7 +18,7 @@ s2d::BoxCollider::BoxCollider(s2d::Sprite* sprite)
 s2d::BoxCollider::BoxCollider(s2d::Sprite* sprite, s2d::BoxCollider& rhs)
 {
     this->init();
-
+    this->resetPositions();
     this->ptr_attached_sprite = sprite;
     this->box_collider_height = rhs.box_collider_height;
     this->box_collider_width = rhs.box_collider_width;
@@ -70,6 +69,7 @@ void s2d::BoxCollider::checkPositions(const BoxCollider& other)
     if (this->ptr_attached_sprite->getOrigininalPosition().x + this->ptr_attached_sprite->transform.texture_size.x + this->ptr_attached_sprite->collider.box_collider_width.y >= other.ptr_attached_sprite->getOrigininalPosition().x + other.box_collider_width.x
         && this->ptr_attached_sprite->getOrigininalPosition().x + this->ptr_attached_sprite->transform.texture_size.x + this->ptr_attached_sprite->collider.box_collider_width.y <= other.ptr_attached_sprite->getOrigininalPosition().x + other.box_collider_width.x + range)
     {
+        this->m_got_right = true;
         this->right = true;
         return;
     }
@@ -79,6 +79,7 @@ void s2d::BoxCollider::checkPositions(const BoxCollider& other)
     if (this->ptr_attached_sprite->getOrigininalPosition().x + this->box_collider_width.x <= other.ptr_attached_sprite->getOrigininalPosition().x + other.ptr_attached_sprite->transform.texture_size.x + other.box_collider_width.y
         && this->ptr_attached_sprite->getOrigininalPosition().x + this->box_collider_width.x + range >= other.ptr_attached_sprite->getOrigininalPosition().x + other.ptr_attached_sprite->transform.texture_size.x + other.box_collider_width.y)
     {
+        this->m_got_left = true;
         this->left = true;
         return;
     }
@@ -88,10 +89,12 @@ void s2d::BoxCollider::checkPositions(const BoxCollider& other)
     if (this->ptr_attached_sprite->getOrigininalPosition().y + this->ptr_attached_sprite->transform.texture_size.y + this->ptr_attached_sprite->collider.box_collider_height.y >= other.ptr_attached_sprite->getOrigininalPosition().y + other.box_collider_height.x
         && (this->ptr_attached_sprite->getOrigininalPosition().y + this->ptr_attached_sprite->transform.texture_size.y + this->ptr_attached_sprite->collider.box_collider_height.y <= other.ptr_attached_sprite->getOrigininalPosition().y + other.box_collider_height.x + range))
     {
-        this->down = true;
+        this->m_got_down = true;
+        this->down = true;   
         return;
     }
 
+    this->m_got_up = true;
     this->up = true;
     return;
 }
@@ -104,6 +107,10 @@ void s2d::BoxCollider::checkCollisions(s2d::SpriteRepository& repo)
     {
         s2d::Sprite* ds = repo.readAt(i);
         ds->collider.collided_in_frame = false;
+        ds->collider.m_got_down = false;
+        ds->collider.m_got_up = false;
+        ds->collider.m_got_right = false;
+        ds->collider.m_got_left = false;
     }
     for (size_t i = 0; i < repo.amount(); i++)
     {
@@ -134,6 +141,22 @@ void s2d::BoxCollider::checkCollisions(s2d::SpriteRepository& repo)
         {
             sprite->collider.resetPositions();
         }
+        if (!sprite->collider.m_got_down)
+        {
+            sprite->collider.down = false;
+        }
+        if (!sprite->collider.m_got_up)
+        {
+            sprite->collider.up = false;
+        }
+        if (!sprite->collider.m_got_right)
+        {
+            sprite->collider.right = false;
+        }
+        if (!sprite->collider.m_got_left)
+        {
+            sprite->collider.left = false;
+        }
     }
 }
 
@@ -157,9 +180,6 @@ bool s2d::BoxCollider::checkCollision(s2d::BoxCollider& other, s2d::BoxCollider&
         && getPosY + ptr_attached_sprite->transform.texture_size.y + rhs.box_collider_height.y >= otherGetPosY + other.box_collider_height.x
         && getPosY + rhs.box_collider_height.x <= otherGetPosY + other.box_collider_height.y + other.ptr_attached_sprite->transform.texture_size.y)
     {
-        rhs.resetPositions();
-        other.resetPositions();
-
         other.collided = true;
         other.collided_in_frame = true;
         rhs.collided = true;

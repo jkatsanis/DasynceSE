@@ -15,6 +15,11 @@ namespace s2d
 		int m_start = -5;
 		int m_end = 5;
 
+		bool m_got_left;
+		bool m_got_right;
+		bool m_got_up;
+		bool m_got_down;
+
 		void checkPositions(const BoxCollider& other);
 		void init() override;
 	public:

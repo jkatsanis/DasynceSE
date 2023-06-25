@@ -19,6 +19,7 @@ void PlayerController::update()
 	this->leftRight();
 	this->jump();
 	this->slide();
+	this->wallJump();
 
 	s2d::Vector2 pos =s2d::Vector2(this->m_ptr_player->transform.getPosition().x, this->m_ptr_player->transform.getPosition().y + 170);
 	s2d::GameObject::camera.transform.setPosition(pos);
@@ -45,7 +46,6 @@ void PlayerController::leftRight()
 {
 	if (s2d::Input::onKeyHold(s2d::KeyBoardCode::A))
 	{
-		this->m_ptr_player->transform.setScale(s2d::Vector2(-this->m_scale.x, this->m_scale.y));
 		const s2d::Vector2 pos = s2d::Vector2(this->m_ptr_player->transform.getPosition().x - PLAYER_SPEED * s2d::Time::s_delta_time,
 			this->m_ptr_player->transform.getPosition().y);
 
@@ -53,11 +53,10 @@ void PlayerController::leftRight()
 	}
 	if (s2d::Input::onKeyHold(s2d::KeyBoardCode::D))
 	{
-		this->m_ptr_player->transform.setScale(s2d::Vector2(this->m_scale.x, this->m_scale.y));
 		const s2d::Vector2 pos = s2d::Vector2(this->m_ptr_player->transform.getPosition().x + PLAYER_SPEED * s2d::Time::s_delta_time,
 			this->m_ptr_player->transform.getPosition().y);
 
-		this->m_ptr_player->transform.setPosition(pos);	
+		this->m_ptr_player->transform.setPosition(pos);
 	}
 	if (s2d::Input::onKeyHold(s2d::KeyBoardCode::W))
 	{
@@ -71,15 +70,6 @@ void PlayerController::leftRight()
 			this->m_ptr_player->transform.getPosition().y - PLAYER_SPEED * s2d::Time::s_delta_time);
 		this->m_ptr_player->transform.setPosition(pos);
 	}
-
-	if (s2d::Input::onKeyHold(s2d::KeyBoardCode::P))
-	{
-		s2d::Sprite* bush = this->m_game->config.ptr_sprites->getSpriteWithName("Wallsmall");
-		const s2d::Vector2 pos = s2d::Vector2(bush->transform.getPosition().x + PLAYER_SPEED * s2d::Time::s_delta_time,
-			bush->transform.getPosition().y);
-
-		bush->transform.setPosition(pos);
-	}
 }
 
 void PlayerController::jump()
@@ -90,6 +80,10 @@ void PlayerController::jump()
 		{
 			this->m_grounded = true;
 		}
+	}
+	else
+	{
+		this->m_grounded = false;
 	}
 	if (s2d::Input::onKeyPress(s2d::KeyBoardCode::Space) && this->m_grounded)
 	{
@@ -115,6 +109,17 @@ void PlayerController::slide()
 			this->m_ptr_player->physicsBody.velocity.x = 0.0f;
 			this->m_sliding = false;
 			this->m_time_slided = 0.0f;
+		}
+	}
+}
+
+void PlayerController::wallJump()
+{
+	if (this->m_ptr_player->collider.colliding_sprite != nullptr)
+	{
+		if (this->m_ptr_player->collider.colliding_sprite->tag == "wall")
+		{
+			this->m_ptr_player->physicsBody.velocity.y = 0.0f;
 		}
 	}
 }

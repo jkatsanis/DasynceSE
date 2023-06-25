@@ -1,5 +1,5 @@
 idle
-9
+50
 0.000000;assets\player\animations\idle\idle_1.png
 30.000000;assets\player\animations\idle\idle_2.png
 30.000000;assets\player\sprites\player.png
