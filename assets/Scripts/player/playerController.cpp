@@ -59,7 +59,18 @@ void PlayerController::leftRight()
 
 		this->m_ptr_player->transform.setPosition(pos);	
 	}
-
+	if (s2d::Input::onKeyHold(s2d::KeyBoardCode::W))
+	{
+		const s2d::Vector2 pos = s2d::Vector2(this->m_ptr_player->transform.getPosition().x,
+			this->m_ptr_player->transform.getPosition().y + PLAYER_SPEED * s2d::Time::s_delta_time);
+		this->m_ptr_player->transform.setPosition(pos);
+	}
+	if (s2d::Input::onKeyHold(s2d::KeyBoardCode::S))
+	{
+		const s2d::Vector2 pos = s2d::Vector2(this->m_ptr_player->transform.getPosition().x,
+			this->m_ptr_player->transform.getPosition().y - PLAYER_SPEED * s2d::Time::s_delta_time);
+		this->m_ptr_player->transform.setPosition(pos);
+	}
 }
 
 void PlayerController::jump()
@@ -75,7 +86,6 @@ void PlayerController::jump()
 	{
 		this->m_grounded = false;
 		this->m_ptr_player->physicsBody.velocity.y = 0;
-		std::cout << "jhump" << std::endl;
 		s2d::Physics::addForce(this->m_ptr_player, s2d::Vector2(0, 1), 1000.0f);
 	}
 }

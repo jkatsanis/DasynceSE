@@ -1,37 +1,25 @@
 #include "spriteComponents/childSystem.h"
 #include <physicalComponents/sprite.h>
 
-void s2d::ChildSystem::updatePositionToParent(s2d::Sprite* child)
-{
-	if (child->parent != nullptr)
-	{
-		s2d::Vector2 distance = s2d::Vector2(child->parent->transform.getPosition() - child->transform.getPosition());
-		child->transform.position_to_parent = distance;
-	}
-}
-
 void s2d::ChildSystem::updateChildPositionRecursivly(s2d::Sprite* parent)
 {
 	for (s2d::Sprite* child : parent->ptr_childs)
 	{
 		s2d::Vector2 p = parent->transform.getPosition() - child->transform.position_to_parent;
-		child->transform.setPosition(p);
-		s2d::Vector2 distance = s2d::Vector2(parent->transform.getPosition() - child->transform.getPosition());
-		child->transform.position_to_parent = distance;
-
+		child->transform.setPositionForce(p);
 		updateChildPositionRecursivly(child);
 	}
 }
 
 // RESET POSITION WHEN TREE MEMBER IS COLLIDING
 
-void s2d::ChildSystem::updatePositionRevursivWhenChildIsColliding(s2d::Sprite* child)
+void s2d::ChildSystem::updatePositionRevursivWhenChildIsColliding(s2d::Sprite* node, s2d::Sprite* copy)
 {
 	//Iterating over all sprites so set the position enum
-	for (s2d::Sprite* node : child->ptr_childs)
+	for (s2d::Sprite* child : node->ptr_childs)
 	{
-		setBoxColliderPosition(node, child);
-		updatePositionRevursivWhenChildIsColliding(node);
+		setBoxColliderPosition(child, copy);
+		updatePositionRevursivWhenChildIsColliding(child, copy);
 	}
 }
 
@@ -44,16 +32,33 @@ void s2d::ChildSystem::resetPositionWhenChildIsColliding(s2d::Sprite* child)
 	}
 	s2d::Sprite* node = child->getNode();
 
-	setBoxColliderPosition(child, node);
+	setBoxColliderPosition(node, child);
 
-	s2d::ChildSystem::updatePositionRevursivWhenChildIsColliding(node);
+	s2d::ChildSystem::updatePositionRevursivWhenChildIsColliding(node, child);
 }
 
 
-void s2d::ChildSystem::setBoxColliderPosition(s2d::Sprite* child, s2d::Sprite* node)
+void s2d::ChildSystem::setBoxColliderPosition(s2d::Sprite* child, s2d::Sprite* copy)
 {
-	child->collider.left = node->collider.left;
-	child->collider.right = node->collider.right;
-	child->collider.up = node->collider.up;
-	child->collider.down = node->collider.down;
+	if (child->collider.left)
+	{
+		copy->collider.left = true;
+	}
+	if (child->collider.right)
+	{
+		copy->collider.right = true;
+	}	
+	if (child->collider.up)
+	{
+		copy->collider.up = true;
+	}
+	if (child->collider.down)
+	{
+		copy->collider.down = true;
+	}
+
+	child->collider.left = copy->collider.left;
+	child->collider.right = copy->collider.right;
+	child->collider.up = copy->collider.up;
+	child->collider.down = copy->collider.down;
 }

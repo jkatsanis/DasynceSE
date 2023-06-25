@@ -169,8 +169,6 @@ void s2d::Sprite::initVariables(std::string name, s2d::Vector2 spawnPos, std::st
 	this->name = name;
 	this->sprite_renderer.path = path;
 	this->transform.setPosition(spawnPos);
-	this->transform.last_pos = s2d::Vector2(0, 0);
-	this->transform.next_pos = this->transform.getPosition();;
 
 	this->sprite_renderer.sorting_layer_index = 0;
 

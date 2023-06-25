@@ -40,6 +40,14 @@ void s2d::Transform::setPosition(const s2d::Vector2& positon)
 	{
 		return;
 	}
+	if (this->m_attached_sprite != nullptr && this->m_attached_sprite->parent != nullptr)
+	{
+		s2d::Vector2 distance = this->m_attached_sprite->parent->transform.getPosition() - this->m_position;
+		if (distance != this->position_to_parent)
+		{
+			this->position_to_parent = distance;
+		}
+	}
 	this->m_position = positon;
 }
 
@@ -72,11 +80,6 @@ void s2d::Transform::setRotation(uint32_t angle)
 {
 	this->m_rotation = angle % 360;
 	this->m_attached_sprite->getSprite().setRotation((float)this->m_rotation);
-}
-
-void s2d::Transform::setLastPosition()
-{
-
 }
 
 void s2d::Transform::updateTransformPosition()
@@ -182,7 +185,6 @@ bool s2d::Transform::validatePositionInput(const s2d::Vector2& position)
 
 void s2d::Transform::onPositionChange(s2d::Sprite* sprite)
 {
-	ChildSystem::resetPositionWhenChildIsColliding(sprite);
-	ChildSystem::updatePositionToParent(sprite);
 	ChildSystem::updateChildPositionRecursivly(sprite);
+	ChildSystem::resetPositionWhenChildIsColliding(sprite);
 }

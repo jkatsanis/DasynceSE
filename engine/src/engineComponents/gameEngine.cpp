@@ -24,12 +24,11 @@ void s2d::GameEngine::pollEngineEvents()
 	for (int i = 0; i < this->m_sprite_repository.amount(); i++)
 	{
 		s2d::Sprite* const sprite = this->m_sprite_repository.readAt(i);
-		if (sprite->transform.getPosition() != sprite->transform.last_pos)
-		{
+		
 #ifdef CHILDSYSTEM
 			Transform::onPositionChange(sprite);
 #endif
-		}
+		
 	}
 }
 

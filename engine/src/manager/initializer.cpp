@@ -378,11 +378,7 @@ void s2d::Initializer::initSprite(const std::string& line, s2d::Sprite* sprite)
 
 #pragma endregion
 # pragma region Last pos, next pos
-	sprite->transform.next_pos.x = std::stof(propertys[20]);
-	sprite->transform.next_pos.y = std::stof(propertys[21]);
 
-	sprite->transform.last_pos.x = std::stof(propertys[22]);
-	sprite->transform.last_pos.y = std::stof(propertys[23]);
 
 #pragma endregion
 
