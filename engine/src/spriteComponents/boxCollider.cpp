@@ -185,9 +185,11 @@ bool s2d::BoxCollider::checkCollision(s2d::BoxCollider& other, s2d::BoxCollider&
         rhs.collided = true;
         rhs.collided_in_frame = true;
 
-        rhs.checkPositions(other);
-        other.checkPositions(rhs);
-
+        if (rhs.is_solid && other.is_solid)
+        {
+            rhs.checkPositions(other);
+            other.checkPositions(rhs);
+        }
         return true;
     }
     return false;

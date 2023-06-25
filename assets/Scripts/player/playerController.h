@@ -4,6 +4,7 @@
 
 #define PLAYER_SPEED 400
 #define SLIDE_TIME 0.3f
+#define WALL_SLIDE_TIME 0.5f
 
 class Game;
 class PlayerController : public s2d::Base
@@ -16,6 +17,10 @@ private:
 	bool m_walking;
 	bool m_sliding;
 	float m_time_slided;
+
+	float m_wall_velocity;
+	float m_wall_timer;
+	bool m_on_wall;
 
 	void animationControll();
 	void leftRight();

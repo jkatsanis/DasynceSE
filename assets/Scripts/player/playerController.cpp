@@ -1,5 +1,4 @@
 #include "playerController.h"
-
 #include <game.h>
 
 void PlayerController::start(Game& game)
@@ -11,6 +10,7 @@ void PlayerController::start(Game& game)
 	this->m_scale = this->m_ptr_player->transform.getScale();
 	this->m_ptr_player->animator.play("idle");
 	this->m_time_slided = 0.0f;
+	this->m_wall_velocity = 0.0f;
 }
 
 void PlayerController::update()
@@ -46,6 +46,7 @@ void PlayerController::leftRight()
 {
 	if (s2d::Input::onKeyHold(s2d::KeyBoardCode::A))
 	{
+		this->m_ptr_player->transform.setScale(s2d::Vector2(-this->m_scale.x, this->m_scale.y));
 		const s2d::Vector2 pos = s2d::Vector2(this->m_ptr_player->transform.getPosition().x - PLAYER_SPEED * s2d::Time::s_delta_time,
 			this->m_ptr_player->transform.getPosition().y);
 
@@ -53,22 +54,11 @@ void PlayerController::leftRight()
 	}
 	if (s2d::Input::onKeyHold(s2d::KeyBoardCode::D))
 	{
+		this->m_ptr_player->transform.setScale(s2d::Vector2(this->m_scale.x, this->m_scale.y));
 		const s2d::Vector2 pos = s2d::Vector2(this->m_ptr_player->transform.getPosition().x + PLAYER_SPEED * s2d::Time::s_delta_time,
 			this->m_ptr_player->transform.getPosition().y);
 
-		this->m_ptr_player->transform.setPosition(pos);
-	}
-	if (s2d::Input::onKeyHold(s2d::KeyBoardCode::W))
-	{
-		const s2d::Vector2 pos = s2d::Vector2(this->m_ptr_player->transform.getPosition().x,
-			this->m_ptr_player->transform.getPosition().y + PLAYER_SPEED * s2d::Time::s_delta_time);
-		this->m_ptr_player->transform.setPosition(pos);
-	}
-	if (s2d::Input::onKeyHold(s2d::KeyBoardCode::S))
-	{
-		const s2d::Vector2 pos = s2d::Vector2(this->m_ptr_player->transform.getPosition().x,
-			this->m_ptr_player->transform.getPosition().y - PLAYER_SPEED * s2d::Time::s_delta_time);
-		this->m_ptr_player->transform.setPosition(pos);
+		this->m_ptr_player->transform.setPosition(pos);	
 	}
 }
 
@@ -119,8 +109,33 @@ void PlayerController::wallJump()
 	{
 		if (this->m_ptr_player->collider.colliding_sprite->tag == "wall")
 		{
+			this->m_ptr_player->physicsBody.velocity.y = this->m_wall_velocity;
+			this->m_on_wall = true;
+
+		}
+		else if(this->m_ptr_player->physicsBody.velocity.y > 0
+			&& this->m_ptr_player->collider.colliding_sprite->tag == "PushDown")
+		{
 			this->m_ptr_player->physicsBody.velocity.y = 0.0f;
 		}
+	}
+	if (!this->m_on_wall)
+	{
+		return;
+	}
+
+	this->m_wall_timer += s2d::Time::s_delta_time;
+
+	if (this->m_wall_timer >= WALL_SLIDE_TIME)
+	{
+		this->m_wall_velocity--;
+	}
+
+	if (this->m_grounded)
+	{
+		this->m_wall_velocity = 0;
+		this->m_wall_timer = 0;
+		this->m_on_wall = false;
 	}
 }
 
