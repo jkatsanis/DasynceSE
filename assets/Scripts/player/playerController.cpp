@@ -71,6 +71,15 @@ void PlayerController::leftRight()
 			this->m_ptr_player->transform.getPosition().y - PLAYER_SPEED * s2d::Time::s_delta_time);
 		this->m_ptr_player->transform.setPosition(pos);
 	}
+
+	if (s2d::Input::onKeyHold(s2d::KeyBoardCode::P))
+	{
+		s2d::Sprite* bush = this->m_game->config.ptr_sprites->getSpriteWithName("Wallsmall");
+		const s2d::Vector2 pos = s2d::Vector2(bush->transform.getPosition().x + PLAYER_SPEED * s2d::Time::s_delta_time,
+			bush->transform.getPosition().y);
+
+		bush->transform.setPosition(pos);
+	}
 }
 
 void PlayerController::jump()

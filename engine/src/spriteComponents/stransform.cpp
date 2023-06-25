@@ -42,7 +42,7 @@ void s2d::Transform::setPosition(const s2d::Vector2& positon)
 	}
 	if (this->m_attached_sprite != nullptr && this->m_attached_sprite->parent != nullptr)
 	{
-		s2d::Vector2 distance = this->m_attached_sprite->parent->transform.getPosition() - this->m_position;
+		s2d::Vector2 distance = this->m_attached_sprite->parent->transform.getPosition() - positon;
 		if (distance != this->position_to_parent)
 		{
 			this->position_to_parent = distance;
