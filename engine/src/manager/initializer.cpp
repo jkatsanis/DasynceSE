@@ -238,8 +238,6 @@ void s2d::Initializer::initPrefab(const std::string& path)
 
 		for (size_t i = 0; i < paths_to_animations.size(); i++)
 		{
-			s2d::SpriteRepository repo;
-
 			s2d::Initializer::initAnimation(paths_to_animations[i], spr);
 		}
 
@@ -299,6 +297,7 @@ void s2d::Initializer::initAnimation(const std::string& path, s2d::Sprite* spr)
 	std::string animationName = "";
 
 	std::vector<s2d::KeyFrame> frames = std::vector<s2d::KeyFrame>(0);
+	bool loop = false;
 
 	if (animationFileStream.is_open())
 	{
@@ -316,6 +315,11 @@ void s2d::Initializer::initAnimation(const std::string& path, s2d::Sprite* spr)
 			{
 				continue;
 			}
+			if (cnt == 3)
+			{
+				loop = line == "True";
+				continue;
+			}
 
 			std::vector<std::string> propertys = std::splitString(line, DELIMITER);
 
@@ -328,6 +332,8 @@ void s2d::Initializer::initAnimation(const std::string& path, s2d::Sprite* spr)
 	if (ptr_sprite != nullptr)
 	{
 		ptr_sprite->animator.createAnimation(animationName, path, frames);
+		s2d::Animation& anim = ptr_sprite->animator.animations[animationName];
+		anim.loop = loop;
 	}
 }
 

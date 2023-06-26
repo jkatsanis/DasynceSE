@@ -89,7 +89,7 @@ s2d::Vector2 s2d::Sprite::getOrigininalPosition()
 
 void s2d::Sprite::validateProperties(int id, s2d::SpriteRepository& repo)
 {
-	if (this->m_id == -1)
+	if (repo.main_content_iniitialied)
 	{
 		this->m_id = id;
 	}

@@ -87,6 +87,7 @@ void PlayerController::slide()
 {
 	if (s2d::Input::onKeyPress(s2d::KeyBoardCode::LShift) && this->m_walking)
 	{
+		this->m_ptr_player->physicsBody.velocity.x = 0;
 		const float direction = (this->m_ptr_player->transform.getScale().x < 0.0f) ? -1.0f : 1.0f;
 		s2d::Physics::addForce(this->m_ptr_player, s2d::Vector2(direction, 0), 1000.0f);
 		this->m_sliding = true;

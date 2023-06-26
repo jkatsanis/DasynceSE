@@ -56,7 +56,7 @@ void s2d::Animation::init()
 	this->current_frame = -1;
 	this->is_playing = false;
 	this->total_time_passed = 0.0f;
-	this->loop = true;
+	this->loop = false;
 }
 
 
@@ -115,7 +115,10 @@ void s2d::Animation::update()
 		if (this->current_frame == this->m_keyframes.size())
 		{
 			this->stop();
-			this->play();
+			if (this->loop)
+			{
+				this->play();
+			}
 		}
 	}
 }
