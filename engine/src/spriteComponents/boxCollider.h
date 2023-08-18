@@ -6,6 +6,8 @@
 #include <manager/spriteRepository.h>
 #include <spriteComponents/component.h>
 
+#include <unordered_map>
+
 namespace s2d
 {
 	class Sprite;
@@ -34,7 +36,7 @@ namespace s2d
 		bool collided;
 
 		s2d::Sprite* ptr_attached_sprite;
-		s2d::Sprite* colliding_sprite;
+		std::unordered_map<uint32_t, s2d::Sprite*> collided_sprite_map;
 
 		Vector2 box_collider_width;
 		Vector2 box_collider_height;
@@ -49,6 +51,10 @@ namespace s2d
 		void reset() override;
 
 		void resetPositions();
+
+		s2d::Sprite* collidedWithId(uint32_t id);
+		s2d::Sprite* collidedWithTag(const std::string& tag);
+		s2d::Sprite* collidedWithName(const std::string& name);
 
 	public:
 		static bool checkCollision(s2d::BoxCollider& lhs, s2d::BoxCollider& rhs);

@@ -96,12 +96,15 @@ void s2d::Initializer::initAnimations(s2d::SpriteRepository& repo)
 		{
 			cnt++;
 			if (cnt == 1) continue;
-			s2d::Initializer::initAnimation(line, repo);
+			s2d::Initializer::initAnimationRepo(line, repo);
 		}
 
 		knownAnimationFileStream.close();
 	}
-	else std::cout << "LOG: [ERROR] could not open animation(s) file!";
+	else
+	{
+		std::cout << "LOG: [ERROR] could not open animation(s) file!";
+	}
 }
 
 void s2d::Initializer::initSprites(s2d::SpriteRepository& spriteRepo)
@@ -255,7 +258,7 @@ void s2d::Initializer::initPrefab(const std::string& path)
 	}
 }
 
-void s2d::Initializer::initAnimation(const std::string& path, s2d::SpriteRepository& repo)
+void s2d::Initializer::initAnimationRepo(const std::string& path, s2d::SpriteRepository& repo)
 {
 	std::fstream animationFileStream;
 	animationFileStream.open(path);
@@ -298,7 +301,6 @@ void s2d::Initializer::initAnimation(const std::string& path, s2d::Sprite* spr)
 
 	std::vector<s2d::KeyFrame> frames = std::vector<s2d::KeyFrame>(0);
 	bool loop = false;
-
 	if (animationFileStream.is_open())
 	{
 		std::string line;
@@ -328,7 +330,10 @@ void s2d::Initializer::initAnimation(const std::string& path, s2d::Sprite* spr)
 		}
 		animationFileStream.close();
 	}
-	else std::cout << "LOG: [ERROR] could not open animation data file!";
+	else
+	{
+		std::cout << "LOG: [ERROR] could not open animation data file! at " << path;
+	}
 	if (ptr_sprite != nullptr)
 	{
 		ptr_sprite->animator.createAnimation(animationName, path, frames);

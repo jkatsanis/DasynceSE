@@ -38,6 +38,11 @@ void s2d::Transform::init()
 
 // Public functions
 
+void s2d::Transform::addPositionX(const float x)
+{
+	this->setPosition(s2d::Vector2(this->m_position.x + x, this->m_position.y));
+}
+
 void s2d::Transform::setPosition(const s2d::Vector2& positon)
 {
 	if (!this->validatePositionInput(positon))
