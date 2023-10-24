@@ -22,7 +22,8 @@ namespace s2d
 		/// <param name="scale">The scale for the new textureSize</param>
 		void setTextureSize(const s2d::Vector2& scale);
 		void init() override;
-		bool validatePositionInput(const s2d::Vector2& position);
+		s2d::Vector2 validatePositionInput(const s2d::Vector2& position);
+		void updateSpritePositionToParent(const s2d::Vector2& position);
 	public:
 		s2d::Vector2 texture_size;
 		s2d::Vector2 position_to_parent;

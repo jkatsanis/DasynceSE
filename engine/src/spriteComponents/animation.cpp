@@ -114,10 +114,15 @@ void s2d::Animation::update()
 		this->current_frame++;
 		if (this->current_frame == this->m_keyframes.size())
 		{
-			this->stop();
 			if (this->loop)
 			{
+				// Hard coding the path bc skill issue
+				this->ptr_applied_sprite->sprite_renderer.path = this->m_base_path;
 				this->play();
+			}
+			else
+			{
+				this->stop();
 			}
 		}
 	}

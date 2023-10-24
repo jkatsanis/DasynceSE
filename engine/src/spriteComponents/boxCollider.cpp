@@ -94,41 +94,46 @@ s2d::Sprite* s2d::BoxCollider::collidedWithName(const std::string& name)
 
 void s2d::BoxCollider::checkPositions(const BoxCollider& other)
 {
-    short range = 10;
+    const short range = 10;
+
+    // OTHER
     const float other_right = other.ptr_attached_sprite->getOrigininalPosition().x + other.ptr_attached_sprite->transform.texture_size.x + other.box_collider_width.y;
     const float other_left = other.ptr_attached_sprite->getOrigininalPosition().x + other.box_collider_width.x;
+
+    const float other_bottom = other.ptr_attached_sprite->getOrigininalPosition().y + other.ptr_attached_sprite->transform.texture_size.y + other.box_collider_height.y;
+    const float other_top = other.ptr_attached_sprite->getOrigininalPosition().y + other.box_collider_height.x;
+
+    // THIS    
+    const float this_bottom = this->ptr_attached_sprite->getOrigininalPosition().y + this->ptr_attached_sprite->transform.texture_size.y + this->box_collider_height.y;
+    const float this_top = this->ptr_attached_sprite->getOrigininalPosition().y + this->box_collider_height.x;
 
     const float this_right = this->ptr_attached_sprite->getOrigininalPosition().x + this->ptr_attached_sprite->transform.texture_size.x + this->ptr_attached_sprite->collider.box_collider_width.y;
     const float this_left = this->ptr_attached_sprite->getOrigininalPosition().x + this->box_collider_width.x;
 
     // Right
-    if (this->ptr_attached_sprite->getOrigininalPosition().x + other_left
-        && this_right <= other.ptr_attached_sprite->getOrigininalPosition().x + other.box_collider_width.x + range)
+    if (this_right >= other_left
+        && this_right <= other_left + range)
     {   
+  
         this->m_got_right = true;
         this->right = true;
         return;
     }
 
+
     // Left
 
     if (this_left <= other_right
-        && this->ptr_attached_sprite->getOrigininalPosition().x + this->box_collider_width.x + range >= other.ptr_attached_sprite->getOrigininalPosition().x + other.ptr_attached_sprite->transform.texture_size.x + other.box_collider_width.y)
+        && this_left + range >= other_right)
     {
-        const float space = (other.ptr_attached_sprite->getOrigininalPosition().x + other.ptr_attached_sprite->transform.texture_size.x + other.ptr_attached_sprite->collider.box_collider_width.y -
-            this->ptr_attached_sprite->getOrigininalPosition().x - this->box_collider_width.x);
-
-        this->ptr_attached_sprite->transform.addPositionX(space - 0.01f);
-        std::cout << space << std::endl;
         this->m_got_left = true;
         this->left = true;
         return;
     }
 
     // Down
-
-    if (this->ptr_attached_sprite->getOrigininalPosition().y + this->ptr_attached_sprite->transform.texture_size.y + this->ptr_attached_sprite->collider.box_collider_height.y >= other.ptr_attached_sprite->getOrigininalPosition().y + other.box_collider_height.x
-        && (this->ptr_attached_sprite->getOrigininalPosition().y + this->ptr_attached_sprite->transform.texture_size.y + this->ptr_attached_sprite->collider.box_collider_height.y <= other.ptr_attached_sprite->getOrigininalPosition().y + other.box_collider_height.x + range))
+    if (this_bottom >= other_top
+        && this_bottom <= other_top + range)
     {
         this->m_got_down = true;
         this->down = true;

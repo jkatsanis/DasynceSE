@@ -1,5 +1,5 @@
 run
-147
+50
 True
 20.000000;assets\player\animations\run\run_2.png
 20.000000;assets\player\sprites\player.png

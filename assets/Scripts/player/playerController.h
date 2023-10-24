@@ -2,7 +2,7 @@
 
 #include <_header/SpriteEngine.h>
 
-#define PLAYER_SPEED 400
+#define PLAYER_SPEED 800
 #define SLIDE_TIME 0.3f
 #define WALL_SLIDE_TIME 0.5f
 #define DOWN_ATTACK_SPEED -1000
@@ -23,6 +23,7 @@ private:
 	float m_wall_velocity;
 	float m_wall_timer;
 	bool m_on_wall;
+
 
 	bool m_down_attacking;
 

@@ -30,6 +30,8 @@ void PlayerController::update()
 	this->wallJump();
 	this->downAttack();
 
+	std::cout << this->m_ptr_player->collider.left;
+
 	s2d::Vector2 pos =s2d::Vector2(this->m_ptr_player->transform.getPosition().x, this->m_ptr_player->transform.getPosition().y + 170);
 	s2d::GameObject::camera.transform.setPosition(pos);
 }
@@ -40,13 +42,13 @@ void PlayerController::animationControll()
 	{
 		this->m_walking = true;
 		this->m_ptr_player->animator.stop("idle");
-		this->m_ptr_player->animator.play("run");
+		this->m_ptr_player->animator.play("runv2");
 	}
 	else if ((s2d::Input::onKeyRelease(s2d::KeyBoardCode::A) || s2d::Input::onKeyRelease(s2d::KeyBoardCode::D))
 		&& !s2d::Input::onKeyHold(s2d::KeyBoardCode::A) && !s2d::Input::onKeyHold(s2d::KeyBoardCode::D))
 	{
 		this->m_walking = false;
-		this->m_ptr_player->animator.stop("run");
+		this->m_ptr_player->animator.stop("runv2");
 		this->m_ptr_player->animator.play("idle");
 	}
 }
@@ -85,16 +87,6 @@ void PlayerController::jump()
 		this->m_grounded = false;
 		this->m_ptr_player->physicsBody.velocity.y = 0;
 		s2d::Physics::addForce(this->m_ptr_player, s2d::Vector2(0, 1), 1000.0f);
-
-		s2d::Sprite* wall = this->m_ptr_player->collider.collidedWithName("Wall 1");
-
-		if (wall != nullptr && wall->collider.right)
-		{
-			const s2d::Vector2 pos = s2d::Vector2(this->m_ptr_player->transform.getPosition().x + 1,
-				this->m_ptr_player->transform.getPosition().y);
-
-			this->m_ptr_player->transform.setPosition(pos);
-		}
 	}
 }
 
@@ -125,18 +117,13 @@ void PlayerController::slide()
 
 void PlayerController::wallJump()
 {
-
-	if (this->m_ptr_player->collider.collidedWithTag("wall") != nullptr)
+	if (this->m_ptr_player->collider.collidedWithTag("wall") != nullptr && s2d::Input::onKeyHold(s2d::KeyBoardCode::A))
 	{
 		this->m_ptr_player->physicsBody.velocity.y = this->m_wall_velocity;
 		this->m_on_wall = true;
 
 	}
-	else if (this->m_ptr_player->physicsBody.velocity.y > 0
-		&& this->m_ptr_player->collider.collidedWithTag("PushDown") != nullptr)
-	{
-		this->m_ptr_player->physicsBody.velocity.y = 0.0f;
-	}
+
 	
 	if (!this->m_on_wall)
 	{

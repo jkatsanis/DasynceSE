@@ -1,5 +1,5 @@
 dash
-147
+50
 False
 0.000000;assets\player\animations\dash\dash_2.png
 30.000000;assets\player\animations\dash\dash_2.png
