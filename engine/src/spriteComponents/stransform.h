@@ -60,7 +60,7 @@ namespace s2d
 		/// </summary>
 		/// <param name="setScaleForce">Sets the scale even if its the same, not remommended</param>
 		void setScale(const s2d::Vector2& scale, bool setScaleForce = false);
-		s2d::Vector2 const getScale() { return this->m_scale; }
+		const s2d::Vector2& getScale() const { return this->m_scale; }
 
 		uint32_t getRotation() const { return this->m_rotation; }
 

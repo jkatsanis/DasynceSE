@@ -9,5 +9,6 @@ void Game::start()
 
 void Game::update()
 {	
+	ImGui::Text(std::to_string(s2d::Time::fps).c_str());
 	this->m_controller.update();
 }

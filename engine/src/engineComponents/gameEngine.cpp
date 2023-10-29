@@ -35,6 +35,7 @@ void s2d::GameEngine::pollEngineEvents()
 void s2d::GameEngine::pollEvents()
 {
 	bool eventChanged = false;
+	event.type = s2d::Event::None;
 
 	while (this->ptr_render_window->pollEvent(this->windowEvent))
 	{

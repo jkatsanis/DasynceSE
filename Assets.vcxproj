@@ -189,6 +189,7 @@
     <ClCompile Include="engine\src\manager\prefabRepository.cpp" />
     <ClCompile Include="engine\src\spriteComponents\prefab.cpp" />
     <ClCompile Include="assets\Scripts\player\playerController.cpp" />
+    <ClCompile Include="assets\Scripts\player\slide.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="assets\Scripts\features.h" />
@@ -235,6 +236,7 @@
     <ClInclude Include="engine\src\manager\prefabRepository.h" />
     <ClInclude Include="engine\src\spriteComponents\prefab.h" />
     <ClInclude Include="assets\Scripts\player\playerController.h" />
+    <ClInclude Include="assets\Scripts\player\slide.h" />
     <ClInclude Include="src\libraries\include\SFML\Audio.hpp" />
     <ClInclude Include="src\libraries\include\SFML\Audio\AlResource.hpp" />
     <ClInclude Include="src\libraries\include\SFML\Audio\Export.hpp" />
