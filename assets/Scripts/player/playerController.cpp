@@ -7,7 +7,7 @@ void PlayerController::start(Game& game)
 	this->m_grounded = false;
 	this->m_ptr_player = game.config.ptr_sprites->getSpriteWithName("Player");
 	this->m_scale = this->m_ptr_player->transform.getScale();
-	// this->m_ptr_player->animator.play("idle");
+	this->m_ptr_player->animator.play("idle");
 	
 	/////////////////////
 	// PLAYER INITIALIZED
@@ -15,10 +15,10 @@ void PlayerController::start(Game& game)
 
 	this->m_left_default_box_size = this->m_ptr_player->collider.box_collider_width.x;
 
-	this->m_wall_velocity = 0.0f;
 	this->m_down_attacking = true;
 
 	this->m_slide.start(this->m_ptr_player);
+	this->m_wall_jump.start(this->m_ptr_player);
 }
 
 void PlayerController::update()
@@ -28,6 +28,7 @@ void PlayerController::update()
 	this->jump();
 
 	this->m_slide.update(this->m_walking);
+	this->m_wall_jump.update(this->m_grounded);
 
 
 	s2d::Vector2 pos =s2d::Vector2(this->m_ptr_player->transform.getPosition().x, this->m_ptr_player->transform.getPosition().y + 170);
@@ -41,15 +42,15 @@ void PlayerController::animationControll()
 		&& !this->m_slide.isSliding() && !this->m_walking)
 	{
 		this->m_walking = true;
-		// this->m_ptr_player->animator.stop("idle");
+	    this->m_ptr_player->animator.stop("idle");
 		this->m_ptr_player->animator.play("runv2");
 	}
 	else if ((s2d::Input::onKeyRelease(s2d::KeyBoardCode::A) || s2d::Input::onKeyRelease(s2d::KeyBoardCode::D))
 		&& !s2d::Input::onKeyHold(s2d::KeyBoardCode::A) && !s2d::Input::onKeyHold(s2d::KeyBoardCode::D))
 	{
 		this->m_walking = false;
-		// this->m_ptr_player->animator.stop("runv2");
-		// this->m_ptr_player->animator.play("idle");
+		this->m_ptr_player->animator.stop("runv2");
+		this->m_ptr_player->animator.play("idle");
 	}
 }
 
@@ -96,37 +97,6 @@ void PlayerController::jump()
 		s2d::Physics::addForce(this->m_ptr_player, s2d::Vector2(0, 1), 1000.0f);
 	}
 }
-
-void PlayerController::wallJump()
-{
-	if (this->m_ptr_player->collider.collidedWithTag("wall") != nullptr && s2d::Input::onKeyHold(s2d::KeyBoardCode::A))
-	{
-		this->m_ptr_player->physicsBody.velocity.y = this->m_wall_velocity;
-		this->m_on_wall = true;
-
-	}
-
-	
-	if (!this->m_on_wall)
-	{
-		return;
-	}
-
-	this->m_wall_timer += s2d::Time::s_delta_time;
-
-	if (this->m_wall_timer >= WALL_SLIDE_TIME)
-	{
-		this->m_wall_velocity--;
-	}
-
-	if (this->m_grounded)
-	{
-		this->m_wall_velocity = 0;
-		this->m_wall_timer = 0;
-		this->m_on_wall = false;
-	}
-}
-
 void PlayerController::downAttack()
 {
 	if (s2d::Input::onKeyPress(s2d::KeyBoardCode::S))

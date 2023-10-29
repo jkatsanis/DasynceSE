@@ -190,6 +190,7 @@
     <ClCompile Include="engine\src\spriteComponents\prefab.cpp" />
     <ClCompile Include="assets\Scripts\player\playerController.cpp" />
     <ClCompile Include="assets\Scripts\player\slide.cpp" />
+    <ClCompile Include="assets\Scripts\player\wallJump.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="assets\Scripts\features.h" />
@@ -336,6 +337,7 @@
     <ClInclude Include="src\libraries\include\SFML\Window\WindowHandle.hpp" />
     <ClInclude Include="src\libraries\include\SFML\Window\WindowStyle.hpp" />
     <ClInclude Include="engine\src\engineComponents\sTime.h" />
+    <ClInclude Include="assets\Scripts\player\wallJump.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\libraries\include\SFML\Audio\SoundFileFactory.inl" />

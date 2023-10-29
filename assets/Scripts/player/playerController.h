@@ -2,9 +2,9 @@
 
 #include <_header/SpriteEngine.h>
 #include "slide.h"
+#include "wallJump.h"
 
 #define PLAYER_SPEED 800
-#define WALL_SLIDE_TIME 0.5f
 #define DOWN_ATTACK_SPEED -1000
 
 class Game;
@@ -17,18 +17,14 @@ private:
 	bool m_walking;
 	float m_left_default_box_size;
 
-	float m_wall_velocity;
-	float m_wall_timer;
-	bool m_on_wall;
-
 	Slide m_slide;
+	WallJump m_wall_jump;
 
 	bool m_down_attacking;
 
 	void animationControll();
 	void leftRight();
 	void jump();
-	void wallJump();
 	void downAttack();
 
 

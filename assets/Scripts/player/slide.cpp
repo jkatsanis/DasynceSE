@@ -86,7 +86,16 @@ void Slide::stop()
 	this->m_time_slided = 0.0f;
 
 	this->m_ptr_player->animator.stop("dash");
-	this->m_ptr_player->animator.play("runv2");
+
+	if (s2d::Input::onKeyHold(s2d::KeyBoardCode::A) || s2d::Input::onKeyHold(s2d::KeyBoardCode::D))
+	{
+		this->m_ptr_player->animator.play("runv2");
+	}
+	else
+	{
+		this->m_ptr_player->animator.play("idle");
+	}
+
 
 	// Walkk true
 	this->m_dash_key = DashKey::None;
