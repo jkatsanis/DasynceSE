@@ -8,4 +8,9 @@ void Game::start()
 void Game::update()
 {	
 	this->m_controller.update();
+
+	if (s2d::Input::onKeyPress(s2d::KeyBoardCode::M))
+	{
+		s2d::GameObject::camera.setZoom(s2d::GameObject::camera.getZoom() + 200 * s2d::Time::s_delta_time);
+	}
 }

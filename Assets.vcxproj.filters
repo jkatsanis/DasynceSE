@@ -207,9 +207,15 @@
     <ClCompile Include="assets\Scripts\cameraController.cpp">
       <Filter>gamesrc\camera</Filter>
     </ClCompile>
-    <ClCompile Include="engine\src\manager\lightRepository.cpp" />
-    <ClCompile Include="engine\src\physicalComponents\lightSource.cpp" />
-    <ClCompile Include="engine\src\spriteComponents\light.cpp" />
+    <ClCompile Include="engine\src\manager\lightRepository.cpp">
+      <Filter>engine src\manager</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\src\physicalComponents\lightSource.cpp">
+      <Filter>engine src\physicalComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\src\spriteComponents\light.cpp">
+      <Filter>engine src\spriteComponents</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\libraries\include\SFML\Audio\AlResource.hpp">
@@ -642,9 +648,15 @@
     <ClInclude Include="assets\Scripts\cameraController.h">
       <Filter>gamesrc\camera</Filter>
     </ClInclude>
-    <ClInclude Include="engine\src\manager\lightRepository.h" />
-    <ClInclude Include="engine\src\physicalComponents\lightSource.h" />
-    <ClInclude Include="engine\src\spriteComponents\light.h" />
+    <ClInclude Include="engine\src\manager\lightRepository.h">
+      <Filter>engine src\manager</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\src\physicalComponents\lightSource.h">
+      <Filter>engine src\physicalComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\src\spriteComponents\light.h">
+      <Filter>engine src\spriteComponents</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\libraries\include\SFML\Graphics\Glsl.inl">
