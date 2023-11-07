@@ -38,7 +38,7 @@ namespace s2d
 		void setPosition(const s2d::Vector2& positon);
 		void setPositionForce(const s2d::Vector2& positon) { this->m_position = positon; }
 
-		s2d::Vector2 getPosition() { return this->m_position; }
+		const s2d::Vector2& getPosition() const { return this->m_position; }
 
 		/// <summary>
 		/// Sets the rotation
@@ -60,7 +60,7 @@ namespace s2d
 		/// </summary>
 		/// <param name="setScaleForce">Sets the scale even if its the same, not remommended</param>
 		void setScale(const s2d::Vector2& scale, bool setScaleForce = false);
-		const s2d::Vector2& getScale() const { return this->m_scale; }
+		s2d::Vector2 const getScale() { return this->m_scale; }
 
 		uint32_t getRotation() const { return this->m_rotation; }
 

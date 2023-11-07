@@ -97,6 +97,9 @@
     <Filter Include="engine src\engineComponents\physics">
       <UniqueIdentifier>{bb05d042-7677-4bcd-8012-ff0437c43202}</UniqueIdentifier>
     </Filter>
+    <Filter Include="gamesrc\camera">
+      <UniqueIdentifier>{82f83c9c-fa7b-40c7-a0ac-9e3c897e17d6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine\src\spriteComponents\boxCollider.cpp">
@@ -174,6 +177,9 @@
     <ClCompile Include="engine\src\manager\initializer.cpp">
       <Filter>engine src\engineComponents\Initializer</Filter>
     </ClCompile>
+    <ClCompile Include="assets\Scripts\game.cpp">
+      <Filter>gamesrc</Filter>
+    </ClCompile>
     <ClCompile Include="engine\src\spriteComponents\animator.cpp">
       <Filter>engine src\spriteComponents\animation</Filter>
     </ClCompile>
@@ -198,15 +204,12 @@
     <ClCompile Include="assets\Scripts\player\playerController.cpp">
       <Filter>gamesrc\player</Filter>
     </ClCompile>
-    <ClCompile Include="assets\Scripts\player\slide.cpp">
-      <Filter>gamesrc\player</Filter>
+    <ClCompile Include="assets\Scripts\cameraController.cpp">
+      <Filter>gamesrc\camera</Filter>
     </ClCompile>
-    <ClCompile Include="assets\Scripts\player\wallJump.cpp">
-      <Filter>gamesrc\player</Filter>
-    </ClCompile>
-    <ClCompile Include="assets\Scripts\game.cpp">
-      <Filter>gamesrc\player</Filter>
-    </ClCompile>
+    <ClCompile Include="engine\src\manager\lightRepository.cpp" />
+    <ClCompile Include="engine\src\physicalComponents\lightSource.cpp" />
+    <ClCompile Include="engine\src\spriteComponents\light.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\libraries\include\SFML\Audio\AlResource.hpp">
@@ -636,12 +639,12 @@
     <ClInclude Include="assets\Scripts\player\playerController.h">
       <Filter>gamesrc\player</Filter>
     </ClInclude>
-    <ClInclude Include="assets\Scripts\player\slide.h">
-      <Filter>gamesrc\player</Filter>
+    <ClInclude Include="assets\Scripts\cameraController.h">
+      <Filter>gamesrc\camera</Filter>
     </ClInclude>
-    <ClInclude Include="assets\Scripts\player\wallJump.h">
-      <Filter>gamesrc\player</Filter>
-    </ClInclude>
+    <ClInclude Include="engine\src\manager\lightRepository.h" />
+    <ClInclude Include="engine\src\physicalComponents\lightSource.h" />
+    <ClInclude Include="engine\src\spriteComponents\light.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\libraries\include\SFML\Graphics\Glsl.inl">

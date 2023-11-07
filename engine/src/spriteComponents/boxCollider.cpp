@@ -114,7 +114,6 @@ void s2d::BoxCollider::checkPositions(const BoxCollider& other)
     if (this_right >= other_left
         && this_right <= other_left + range)
     {   
-  
         this->m_got_right = true;
         this->right = true;
         return;

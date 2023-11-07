@@ -1,5 +1,5 @@
 dash
 50
 False
-0.000000;assets\player\animations\dash\dash_2.png
-20.000000;assets\player\animations\dash\dash_2.png
+0.000000;assets\player\animations\dash\dash_3.png
+60.000000;assets\player\animations\dash\dash_3.png

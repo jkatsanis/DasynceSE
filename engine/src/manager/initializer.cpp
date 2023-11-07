@@ -353,6 +353,7 @@ void s2d::Initializer::initSprite(const std::string& line, s2d::Sprite* sprite)
 	sprite->transform = s2d::Transform(sprite);
 	sprite->physicsBody = s2d::PhsysicsBody(sprite);
 	sprite->prefab = s2d::Prefab(sprite);
+	sprite->light = s2d::Light(sprite);
 
 	sprite->name = propertys[0];
 	const s2d::Vector2 position = s2d::Vector2(std::stof(propertys[2].c_str()), std::stof(propertys[3].c_str()));
@@ -407,5 +408,17 @@ void s2d::Initializer::initSprite(const std::string& line, s2d::Sprite* sprite)
 
 #pragma region General
 	sprite->tag = propertys[32];
+#pragma endregion
+
+
+#pragma region Light
+	sprite->light.setRadius(std::stof(propertys[34]));
+	sprite->light.setIntensity(std::stof(propertys[35]));
+	if (propertys[33] == "True")
+	{
+		sprite->light.enable();
+	}
+
+	sprite->sprite_renderer.effected_by_light = propertys[36] == "True";
 #pragma endregion
 }

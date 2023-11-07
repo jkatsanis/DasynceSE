@@ -189,6 +189,7 @@ void s2d::Sprite::initVariables(std::string name, s2d::Vector2 spawnPos, std::st
 	this->collider = s2d::BoxCollider(this);
 	this->physicsBody = s2d::PhsysicsBody(this);
 	this->prefab = s2d::Prefab(this);
+	this->light = s2d::Light(this);
 
 	this->postInit();
 }
