@@ -126,19 +126,22 @@ void s2d::GameEngine::updateComponents()
 {
 	for (int i = 0; i < this->m_sprite_repository.amount(); i++)
 	{
+		s2d::Sprite* const sprite = this->m_sprite_repository.readAt(i);
+
+		s2d::LightRepository::updateLightSource(sprite, &s2d::GameObject::camera);
 
 #ifdef COLLISION
 		s2d::BoxCollider::checkCollisions(this->m_sprite_repository);
 #endif
 
 #ifdef ANIMATION
-		s2d::Sprite* const sprite = this->m_sprite_repository.readAt(i);
 		sprite->animator.update();
 #endif
-		s2d::LightRepository::updateLightSource(sprite, s2d::LightRepository::s_update_next, &s2d::GameObject::camera);
+
+		sprite->transform.update();
+
 	}
 	s2d::LightRepository::updateArrays();
-	s2d::LightRepository::s_update_next = false;
 }
 
 // Public functions

@@ -2,12 +2,14 @@
 
 #include <_header/SpriteEngine.h>
 
-#include <player/playerController.h>
+#include <Player/playerController.h>
+#include <Camera/cameraController.h>
 
 class Game : public s2d::Base
 {
 private:
 	PlayerController m_controller;
+	CameraController m_controller_cam;
 public:
 	s2d::EngineConfig config;
 

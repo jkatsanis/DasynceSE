@@ -1,5 +1,4 @@
 PathToAnimation
-assets\player\animations\run\Looo.txt
-assets\player\animations\dash\dash.txt
-assets\player\animations\idle\idle.txt
-assets\player\animations\run_v2\runv2.txt
+assets\Sprites\Player\Animations\dash\dash.txt
+assets\Sprites\Player\Animations\idle\idle.txt
+assets\Sprites\Player\Animations\run_v2\runv2.txt

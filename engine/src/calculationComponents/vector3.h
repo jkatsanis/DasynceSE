@@ -12,6 +12,8 @@ namespace s2d
 		Vector3();
 		Vector3(float x, float y, float z);
 		static sf::Vector3f toSFVector3(const s2d::Vector3& rhs);
+
+		bool operator==(const Vector3& rhs);
 	};
 }
 

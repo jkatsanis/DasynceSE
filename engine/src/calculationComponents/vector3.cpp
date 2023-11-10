@@ -12,3 +12,10 @@ sf::Vector3f s2d::Vector3::toSFVector3(const s2d::Vector3& vec)
 {
 	return sf::Vector3f(vec.x, vec.y, vec.z);
 }
+
+bool s2d::Vector3::operator==(const s2d::Vector3& rhs)
+{
+	return this->x == rhs.x &&
+		this->y == rhs.y &&
+		this->z == rhs.z;
+}

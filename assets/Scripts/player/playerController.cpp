@@ -29,9 +29,6 @@ void PlayerController::update()
 	this->slide();
 	this->wallJump();
 	this->downAttack();
-
-	s2d::Vector2 pos = s2d::Vector2(this->m_ptr_player->transform.getPosition().x, this->m_ptr_player->transform.getPosition().y + 170);
-	s2d::GameObject::camera.transform.setPosition(pos);
 }
 
 void PlayerController::animationControll()

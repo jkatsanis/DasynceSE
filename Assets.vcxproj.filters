@@ -201,10 +201,10 @@
     <ClCompile Include="engine\src\data\engineConfig.cpp">
       <Filter>engine src\data</Filter>
     </ClCompile>
-    <ClCompile Include="assets\Scripts\player\playerController.cpp">
+    <ClCompile Include="assets\Scripts\Player\playerController.cpp">
       <Filter>gamesrc\player</Filter>
     </ClCompile>
-    <ClCompile Include="assets\Scripts\cameraController.cpp">
+    <ClCompile Include="assets\Scripts\Camera\cameraController.cpp">
       <Filter>gamesrc\camera</Filter>
     </ClCompile>
     <ClCompile Include="engine\src\manager\lightRepository.cpp">
@@ -642,20 +642,20 @@
     <ClInclude Include="engine\src\manager\prefabRepository.h">
       <Filter>engine src\manager</Filter>
     </ClInclude>
-    <ClInclude Include="assets\Scripts\player\playerController.h">
+    <ClInclude Include="assets\Scripts\Player\playerController.h">
       <Filter>gamesrc\player</Filter>
     </ClInclude>
-    <ClInclude Include="assets\Scripts\cameraController.h">
+    <ClInclude Include="assets\Scripts\Camera\cameraController.h">
       <Filter>gamesrc\camera</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\src\manager\lightRepository.h">
-      <Filter>engine src\manager</Filter>
     </ClInclude>
     <ClInclude Include="engine\src\physicalComponents\lightSource.h">
       <Filter>engine src\physicalComponents</Filter>
     </ClInclude>
     <ClInclude Include="engine\src\spriteComponents\light.h">
       <Filter>engine src\spriteComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\src\manager\lightRepository.h">
+      <Filter>engine src\manager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

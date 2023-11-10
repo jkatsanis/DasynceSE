@@ -38,6 +38,11 @@ void s2d::Transform::init()
 
 // Public functions
 
+void s2d::Transform::update()
+{
+	this->position_changed = false;
+}
+
 void s2d::Transform::addPositionX(const float x)
 {
 	this->setPosition(s2d::Vector2(this->m_position.x + x, this->m_position.y));
@@ -48,6 +53,8 @@ void s2d::Transform::setPosition(const s2d::Vector2& position)
 	s2d::Vector2 new_pos = this->validatePositionInput(position);
 
 	this->updateSpritePositionToParent(new_pos);
+
+	this->position_changed = true;
 	this->m_position = new_pos;
 }
 

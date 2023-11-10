@@ -3,14 +3,13 @@
 void Game::start()
 {
 	this->m_controller.start(*this);
+	this->m_controller_cam.start(this->m_controller.getPlayer());
 }
 
 void Game::update()
 {	
+	std::string fps = std::to_string(s2d::Time::fps);
+	ImGui::MenuItem(fps.c_str());
 	this->m_controller.update();
-
-	if (s2d::Input::onKeyPress(s2d::KeyBoardCode::M))
-	{
-		s2d::GameObject::camera.setZoom(s2d::GameObject::camera.getZoom() + 200 * s2d::Time::s_delta_time);
-	}
+	this->m_controller_cam.update();
 }

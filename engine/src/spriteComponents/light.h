@@ -19,9 +19,9 @@ namespace s2d
 		float m_intensity;
 		bool m_intensity_changed;
 
+		s2d::Vector3 m_color;
+		bool m_color_changed;
 	public:
-		s2d::Vector3 color;
-
 		Sprite* ptr_attached_sprite;
 
 		Light();
@@ -32,6 +32,10 @@ namespace s2d
 		void enable();
 		void reset() override;
 
+		const s2d::Vector3& getColor() const { return this->m_color; }
+		void setColor(const s2d::Vector3& color);
+		bool hasColorChanged() const { return this->m_color_changed; }
+		void setColorChangeFlag() { this->m_color_changed = false; }
 
 		void setIntensity(float intense);
 		float getIntensity() const { return this->m_intensity; }

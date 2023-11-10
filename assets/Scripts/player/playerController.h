@@ -38,5 +38,7 @@ public:
 	void start(Game& game);
 
 	void update() override;
+
+	s2d::Sprite* getPlayer() { return this->m_ptr_player; }
 };
 

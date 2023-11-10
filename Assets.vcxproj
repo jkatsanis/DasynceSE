@@ -155,7 +155,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="assets\Scripts\cameraController.cpp" />
+    <ClCompile Include="assets\Scripts\Camera\cameraController.cpp" />
     <ClCompile Include="engine\src\data\engineConfig.cpp" />
     <ClCompile Include="engine\src\spriteComponents\animation.cpp" />
     <ClCompile Include="engine\src\spriteComponents\animator.cpp" />
@@ -189,14 +189,14 @@
     <ClCompile Include="engine\src\spriteComponents\spriteRenderer.cpp" />
     <ClCompile Include="engine\src\manager\prefabRepository.cpp" />
     <ClCompile Include="engine\src\spriteComponents\prefab.cpp" />
-    <ClCompile Include="assets\Scripts\player\playerController.cpp" />
+    <ClCompile Include="assets\Scripts\Player\playerController.cpp" />
     <ClCompile Include="engine\src\manager\lightRepository.cpp" />
     <ClCompile Include="engine\src\physicalComponents\lightSource.cpp" />
     <ClCompile Include="engine\src\spriteComponents\light.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="assets\Scripts\features.h" />
-    <ClInclude Include="assets\Scripts\cameraController.h" />
+    <ClInclude Include="assets\Scripts\Camera\cameraController.h" />
     <ClInclude Include="engine\src\include\stdExtension.h" />
     <ClInclude Include="engine\src\spriteComponents\component.h" />
     <ClInclude Include="engine\src\data\engineConfig.h" />
@@ -239,7 +239,7 @@
     <ClInclude Include="engine\src\data\fileDataMacros.h" />
     <ClInclude Include="engine\src\manager\prefabRepository.h" />
     <ClInclude Include="engine\src\spriteComponents\prefab.h" />
-    <ClInclude Include="assets\Scripts\player\playerController.h" />
+    <ClInclude Include="assets\Scripts\Player\playerController.h" />
     <ClInclude Include="engine\src\manager\lightRepository.h" />
     <ClInclude Include="engine\src\physicalComponents\lightSource.h" />
     <ClInclude Include="engine\src\spriteComponents\light.h" />

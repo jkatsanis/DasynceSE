@@ -5,7 +5,7 @@
 
 // Public methods
 
-void s2d::LightRepository::updateLightSource(s2d::Sprite* sprite, bool call_by_update, const s2d::Camera* camera)
+void s2d::LightRepository::updateLightSource(s2d::Sprite* sprite, s2d::Camera* camera)
 {
 	if (!sprite->light.exist)
 	{
@@ -15,8 +15,9 @@ void s2d::LightRepository::updateLightSource(s2d::Sprite* sprite, bool call_by_u
 	uint32_t idx = sprite->light.getLightIndex();
 	s2d::LightSource& source = s2d::LightRepository::s_m_light_sources[idx];
 
-	if (sprite->transform.position_changed || call_by_update || true)
+	if (sprite->transform.position_changed || camera->hasZoomChanged())
 	{
+		camera->setZoomFlag();
 		s2d::LightRepository::s_m_update = true;
 
 		float zoom = camera->getZoom() - 1;
@@ -26,29 +27,36 @@ void s2d::LightRepository::updateLightSource(s2d::Sprite* sprite, bool call_by_u
 
 		source.position = new_pos;
 	}
-	if (sprite->light.hasRadiusChanged() || call_by_update)
+	if (sprite->light.hasRadiusChanged())
 	{
 		s2d::LightRepository::s_m_update = true;
 
 		sprite->light.setRadiosChangeFlagFalse();
 		source.radius = sprite->light.getRadius();
 	}
-	if (sprite->light.hasIntensityChanged() || call_by_update)
+	if (sprite->light.hasIntensityChanged())
 	{
 		s2d::LightRepository::s_m_update = true;
 
 		sprite->light.setIntensityChangeFlagFalse();
 		source.light_intensities = sprite->light.getIntensity();
 	}
+	if (sprite->light.hasColorChanged())
+	{
+		s2d::LightRepository::s_m_update = true;
+
+		sprite->light.setColorChangeFlag();
+		source.color = sprite->light.getColor();
+	}
 }
 
-void s2d::LightRepository::updateSprite(s2d::Sprite* sprite, bool call_by_update, const s2d::Camera* camera)
+void s2d::LightRepository::updateSprite(s2d::Sprite* sprite, s2d::Camera* camera)
 {
 	if (!sprite->light.exist)
 	{
 		return;
 	}
-	s2d::LightRepository::updateLightSource(sprite, call_by_update, camera);
+	s2d::LightRepository::updateLightSource(sprite, camera);
 	s2d::LightRepository::updateArrays();
 }
 
@@ -175,4 +183,3 @@ std::unordered_map<uint32_t, s2d::LightSource> s2d::LightRepository::s_m_light_s
 sf::Shader s2d::LightRepository::s_m_light_shader;
 uint32_t s2d::LightRepository::s_m_index = 0;
 bool s2d::LightRepository::s_m_update = true;
-bool s2d::LightRepository::s_update_next = true;
