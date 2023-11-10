@@ -223,6 +223,12 @@
       <Filter>gamesrc\enemy</Filter>
     </ClCompile>
     <ClCompile Include="assets\Scripts\Enemy\ratEnemy.cpp" />
+    <ClCompile Include="assets\Scripts\player\slide.cpp">
+      <Filter>gamesrc\player</Filter>
+    </ClCompile>
+    <ClCompile Include="assets\Scripts\player\wallJump.cpp">
+      <Filter>gamesrc\player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\libraries\include\SFML\Audio\AlResource.hpp">
@@ -668,6 +674,12 @@
       <Filter>gamesrc\enemy</Filter>
     </ClInclude>
     <ClInclude Include="assets\Scripts\Enemy\ratEnemy.h" />
+    <ClInclude Include="assets\Scripts\player\slide.h">
+      <Filter>gamesrc\player</Filter>
+    </ClInclude>
+    <ClInclude Include="assets\Scripts\player\wallJump.h">
+      <Filter>gamesrc\player</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\libraries\include\SFML\Graphics\Glsl.inl">
