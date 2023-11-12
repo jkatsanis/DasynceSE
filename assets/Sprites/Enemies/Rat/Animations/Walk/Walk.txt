@@ -1,5 +1,5 @@
 Walk
-177
+192
 True
 0.000000;assets\Sprites\Enemies\Rat\Animations\Walk\keyframe0.png
 5.000000;assets\Sprites\Enemies\Rat\Animations\Walk\keyframe1.png
