@@ -32,7 +32,6 @@ namespace s2d
 		float m_timePassed;
 		bool m_isWindowFullScreen;
 
-		void pollEngineEvents();
 		void pollEvents();
 		void updateUserScriptsAndGUI();
 		void updateWindowStyle();

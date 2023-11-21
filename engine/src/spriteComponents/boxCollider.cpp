@@ -146,68 +146,60 @@ void s2d::BoxCollider::checkPositions(const BoxCollider& other)
 
 //Static functions
 
-void s2d::BoxCollider::checkCollisions(s2d::SpriteRepository& repo)
+void s2d::BoxCollider::checkCollisions(s2d::Sprite* sprite, s2d::SpriteRepository& repo)
 {
-    for (size_t i = 0; i < repo.amount(); i++)
-    {
-        s2d::Sprite* ds = repo.readAt(i);
-        ds->collider.collided_in_frame = false;
-        ds->collider.m_got_down = false;
-        ds->collider.m_got_up = false;
-        ds->collider.m_got_right = false;
-        ds->collider.m_got_left = false;
-    }
-    for (size_t i = 0; i < repo.amount(); i++)
-    {
-        s2d::Sprite* i_s = repo.readAt(i);
+    sprite->collider.collided_in_frame = false;
+    sprite->collider.m_got_down = false;
+    sprite->collider.m_got_up = false;
+    sprite->collider.m_got_right = false;
+    sprite->collider.m_got_left = false;
 
-        for (size_t j = 0; j < repo.amount(); j++)
+
+    s2d::Sprite* i_s = sprite;
+
+    for (size_t j = 0; j < repo.amount(); j++)
+    {
+        s2d::Sprite* j_s = repo.readAt(j);
+
+        if (i_s->getId() == j_s->getId())
         {
-            s2d::Sprite* j_s = repo.readAt(j);
+            continue;
+        }
 
-            if (i_s->getId() == j_s->getId())
-            {
-                continue;
-            }
-
-            if (s2d::BoxCollider::checkCollision(i_s->collider, j_s->collider))
-            {
-                i_s->collider.collided_sprite_map[j_s->getId()] = j_s;
-                j_s->collider.collided_sprite_map[i_s->getId()] = i_s;
-            }
-            else
-            {
-                i_s->collider.collided_sprite_map.erase(j_s->getId());
-                j_s->collider.collided_sprite_map.erase(i_s->getId());
-            }
+        if (s2d::BoxCollider::checkCollision(i_s->collider, j_s->collider))
+        {
+            i_s->collider.collided_sprite_map[j_s->getId()] = j_s;
+            j_s->collider.collided_sprite_map[i_s->getId()] = i_s;
+        }
+        else
+        {
+            i_s->collider.collided_sprite_map.erase(j_s->getId());
+            j_s->collider.collided_sprite_map.erase(i_s->getId());
         }
     }
 
-    // set the colliding sprite to nulltpr if the sprite doens't collide
-    for (int i = 0; i < repo.amount(); i++)
+
+    if (!sprite->collider.collided_in_frame)
     {
-        s2d::Sprite* const sprite = repo.readAt(i);
-        if (!sprite->collider.collided_in_frame)
-        {
-            sprite->collider.resetPositions();
-        }
-        if (!sprite->collider.m_got_down)
-        {
-            sprite->collider.down = false;
-        }
-        if (!sprite->collider.m_got_up)
-        {
-            sprite->collider.up = false;
-        }
-        if (!sprite->collider.m_got_right)
-        {
-            sprite->collider.right = false;
-        }
-        if (!sprite->collider.m_got_left)
-        {
-            sprite->collider.left = false;
-        }
+        sprite->collider.resetPositions();
     }
+    if (!sprite->collider.m_got_down)
+    {
+        sprite->collider.down = false;
+    }
+    if (!sprite->collider.m_got_up)
+    {
+        sprite->collider.up = false;
+    }
+    if (!sprite->collider.m_got_right)
+    {
+        sprite->collider.right = false;
+    }
+    if (!sprite->collider.m_got_left)
+    {
+        sprite->collider.left = false;
+    }
+
 }
 
 

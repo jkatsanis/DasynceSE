@@ -19,19 +19,6 @@ bool s2d::GameEngine::isGameRunning()
 	return this->ptr_render_window->isOpen();
 }
 
-void s2d::GameEngine::pollEngineEvents()
-{
-	for (int i = 0; i < this->m_sprite_repository.amount(); i++)
-	{
-		s2d::Sprite* const sprite = this->m_sprite_repository.readAt(i);
-		
-#ifdef CHILDSYSTEM
-			Transform::onPositionChange(sprite);
-#endif
-		
-	}
-}
-
 void s2d::GameEngine::pollEvents()
 {
 	bool eventChanged = false;
@@ -131,16 +118,22 @@ void s2d::GameEngine::updateComponents()
 
 		s2d::LightRepository::updateLightSource(sprite, &s2d::GameObject::camera);
 
+#ifdef PHYSICS
+		sprite->physicsBody.fixedUpdate();
+#endif
+
 #ifdef COLLISION
-		s2d::BoxCollider::checkCollisions(this->m_sprite_repository);
+		s2d::BoxCollider::checkCollisions(sprite, this->m_sprite_repository);
 #endif
 
 #ifdef ANIMATION
 		sprite->animator.update();
 #endif
-
 		sprite->transform.update();
 
+#ifdef CHILDSYSTEM
+		Transform::onPositionChange(sprite);
+#endif
 	}
 	s2d::LightRepository::updateArrays();
 }
@@ -160,9 +153,6 @@ void s2d::GameEngine::update()
 	// Loading everything for 1s
 	if (s2d::Time::timePassed > 1.0f)
 	{
-#ifdef PHYSICS
-		s2d::Physics::update(this->m_sprite_repository);
-#endif
 		this->updateWindowStyle();
 		this->updateUserScriptsAndGUI();
 
@@ -179,9 +169,6 @@ void s2d::GameEngine::update()
 		}
 #endif
 	}
-
-	//Engine event
-	this->pollEngineEvents();
 
 	this->m_renderer.render();
 }

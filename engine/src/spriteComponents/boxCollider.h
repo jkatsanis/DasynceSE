@@ -58,7 +58,7 @@ namespace s2d
 
 	public:
 		static bool checkCollision(s2d::BoxCollider& lhs, s2d::BoxCollider& rhs);
-		static void checkCollisions(s2d::SpriteRepository& spriteRepo);
+		static void checkCollisions(s2d::Sprite* sprite, s2d::SpriteRepository& spriteRepo);
 	};
 }
 
