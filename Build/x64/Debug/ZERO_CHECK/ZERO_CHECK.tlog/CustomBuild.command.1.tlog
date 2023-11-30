@@ -1,0 +1,10 @@
+^C:\DEV\C++\DASYNCESE\BUILD\CMAKEFILES\C9E638ED4A8863625D017F49FB063FBA\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Dev/C++/DasynceSE -BC:/Dev/C++/DasynceSE/Build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Dev/C++/DasynceSE/Build/DasynceSE.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
