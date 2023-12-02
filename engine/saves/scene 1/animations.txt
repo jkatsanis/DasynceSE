@@ -1,4 +1,0 @@
-PathToAnimation
-assets\Sprites\Player\Animations\dash\dash.txt
-assets\Sprites\Player\Animations\idle\idle.txt
-assets\Sprites\Player\Animations\run_v2\runv2.txt

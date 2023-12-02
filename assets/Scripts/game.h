@@ -1,22 +1,22 @@
 #pragma once
 
-#include <_header/SpriteEngine.h>
+// Included from the editor-src
+#include <Source/SpriteEngine.h>
 
-#include <Player/playerController.h>
-#include <Camera/cameraController.h>
-#include <Enemy/enemyBehaviour.h>
+#include "Player/PlayerController.h"
 
-class Game : public s2d::Base
-{
+class Game : public spe::IScript
+{		
 private:
-	PlayerController m_controller;
-	CameraController m_controller_cam;
-	EnemyBehaviour m_enemy_behaviour;
-	
-public:
-	s2d::EngineConfig config;
+	PlayerController m_PlayerController;
 
-	void start() override;
-	void update() override;
+public:
+	spe::EngineConfig EngineConfig;
+	
+	// Gets called on start of the engine
+	void Start() override;
+
+	// Gets called once per frame
+	void Update() override;
 };
 

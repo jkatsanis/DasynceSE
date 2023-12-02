@@ -1,18 +1,13 @@
-#include "game.h"
+#include "Game.h"
 
-void Game::start()
+void Game::Start()
 {
-	this->m_controller.start(*this);
-	this->m_controller_cam.start(this->m_controller.getPlayer());
-	//this->m_enemy_behaviour.start(this->config);
+	this->m_PlayerController.Start(this->EngineConfig);
 }
 
-void Game::update()
+void Game::Update()
 {	
-	std::string fps = std::to_string(s2d::Time::fps);
+	std::string fps = std::to_string(spe::Time::s_fps);
 	ImGui::Text(fps.c_str());
-
-	this->m_controller.update();
-	this->m_controller_cam.update();
-	//this->m_enemy_behaviour.update();
+	this->m_PlayerController.Update();
 }
