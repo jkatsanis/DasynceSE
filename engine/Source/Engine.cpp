@@ -14,6 +14,9 @@ spe::Engine::Engine()
 	this->m_Game.EngineConfig = spe::EngineConfig(&this->m_SceneHandler, &this->m_Camera, &this->m_BackgroundColor);
 
 	spe::Input::setEvent(&this->m_Window.Event);
+	spe::Style::RenderStyle();
+
+	spe::GUI::SetCamera(&this->m_Camera);
 
 	this->m_Game.Start();
 }
@@ -47,10 +50,13 @@ void spe::Engine::UpdateComponents()
 	this->m_Window.PollEvents();
 
 	// Updating the user here
-
-	ImGui::Begin("user-window");
-	this->m_Game.Update();
+	ImGui::Begin("##MainWindow", NULL, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoBackground | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoMove);
+	this->m_Game.Update();	
+	ImGui::SetWindowSize(ImVec2(1920, 1080));
+	ImGui::SetWindowPos(ImVec2(0, 0));
+	ImGui::SetWindowFontScale(spe::Style::s_DefaultFontSize + 0.5f);
 	ImGui::End();
+
 
 	std::list<spe::Sprite*>& sprites = this->m_SceneHandler.SpriteRepository.GetSprites();
 

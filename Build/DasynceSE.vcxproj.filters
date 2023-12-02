@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Dev\C++\DasynceSE\Assets\Scripts\Game.cpp">
+      <Filter>Assets\Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Dev\C++\DasynceSE\Assets\Scripts\Player\PlayerController.cpp">
+      <Filter>Assets\Scripts\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Dev\C++\DasynceSE\Assets\Scripts\Player\Slide.cpp">
+      <Filter>Assets\Scripts\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Dev\C++\DasynceSE\Assets\Scripts\Player\WallJump.cpp">
+      <Filter>Assets\Scripts\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Dev\C++\DasynceSE\Assets\Scripts\UI\LevelUI.cpp">
+      <Filter>Assets\Scripts\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Dev\C++\DasynceSE\Engine\Source\Engine.cpp">
+      <Filter>Engine\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Dev\C++\DasynceSE\Engine\Source\GUI\GUI.cpp">
+      <Filter>Engine\Source\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Dev\C++\DasynceSE\Engine\Source\Main.cpp">
+      <Filter>Engine\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Dev\C++\DasynceSE\Engine\Source\Physics\Physics.cpp">
+      <Filter>Engine\Source\Physics</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Dev\C++\DasynceSE\Assets\Scripts\Game.h">
+      <Filter>Assets\Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\C++\DasynceSE\Assets\Scripts\Player\PlayerController.h">
+      <Filter>Assets\Scripts\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\C++\DasynceSE\Assets\Scripts\Player\Slide.h">
+      <Filter>Assets\Scripts\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\C++\DasynceSE\Assets\Scripts\Player\WallJump.h">
+      <Filter>Assets\Scripts\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\C++\DasynceSE\Assets\Scripts\UI\LevelUI.h">
+      <Filter>Assets\Scripts\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\C++\DasynceSE\Engine\Source\Engine.h">
+      <Filter>Engine\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\C++\DasynceSE\Engine\Source\EngineConfig.h">
+      <Filter>Engine\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\C++\DasynceSE\Engine\Source\GUI\GUI.h">
+      <Filter>Engine\Source\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\C++\DasynceSE\Engine\Source\IScript.h">
+      <Filter>Engine\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\C++\DasynceSE\Engine\Source\Physics\Physics.h">
+      <Filter>Engine\Source\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\C++\DasynceSE\Engine\Source\SpriteEngine.h">
+      <Filter>Engine\Source</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Dev\C++\DasynceSE\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Assets">
+      <UniqueIdentifier>{D9E649FD-967B-389E-8C2B-EC624517A4DC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\Scripts">
+      <UniqueIdentifier>{0BF54E75-325B-30A3-B114-0331838A13D2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\Scripts\Player">
+      <UniqueIdentifier>{C2AE2E67-E28C-37EB-9DB7-5FAFCD44B567}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\Scripts\UI">
+      <UniqueIdentifier>{AB8AF816-1E0A-383D-8739-7FBF6C80D5B8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{0D5A8A83-5C3F-362D-BA1E-78FE0FBA34F4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Source">
+      <UniqueIdentifier>{2B7AC6FC-B3F3-3A05-AD12-2C5ABB081306}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Source\GUI">
+      <UniqueIdentifier>{53B65099-B49C-3B37-80B9-0B6F9EA779C7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Source\Physics">
+      <UniqueIdentifier>{27E39009-E296-3790-B5CC-B22C0DBEE394}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
