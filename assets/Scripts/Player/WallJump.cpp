@@ -7,10 +7,10 @@ void WallJump::start(spe::Sprite* player)
 
 void WallJump::update(const bool& is_grounded)
 {
-	if (this->m_ptr_player->collider.CollidedWithTag("wall") != nullptr
-		&& spe::Input::onKeyHold(spe::KeyBoardCode::A))
+	if (this->m_ptr_player->Collider.CollidedWithTag("wall") != nullptr
+		&& spe::Input::OnKeyHold(spe::KeyBoardCode::A))
 	{
-		this->m_ptr_player->physicsBody.velocity.y = this->m_wall_velocity;
+		this->m_ptr_player->Physicsbody.Velocity.Y = this->m_wall_velocity;
 		this->m_on_wall = true;
 
 	}
@@ -20,7 +20,7 @@ void WallJump::update(const bool& is_grounded)
 		return;
 	}
 
-	this->m_wall_timer += spe::Time::s_delta_time;
+	this->m_wall_timer += spe::Time::s_DeltaTime;
 
 	if (this->m_wall_timer >= WALL_SLIDE_TIME)
 	{

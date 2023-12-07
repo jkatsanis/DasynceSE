@@ -9,22 +9,22 @@
 class PlayerController : public spe::IScript
 {
 private:
-	spe::Camera* m_ptr_camera;
-	spe::Sprite* m_ptr_player;
-	spe::Vector2 m_scale;
-	bool m_grounded;
-	bool m_walking;
-	float m_left_default_box_size;
+	spe::Camera* m_ptr_Camera;
+	spe::Sprite* m_ptr_Player;
+	spe::Vector2 m_Scale;
+	bool m_Grounded;
+	bool m_Walking;
+	float m_LeftDefaultBoxSize;
 
-	Slide m_slide;
-	WallJump m_wall_jump;
+	Slide m_Slide;
+	WallJump m_WallJump;
 
-	bool m_down_attacking;
+	bool m_DownAttacking;
 
-	void animationControll();
-	void leftRight();
-	void jump();
-	void downAttack();
+	void AnimationControll();
+	void LeftRight();
+	void Jump();
+	void DownAttack();
 
 
 public:
@@ -32,5 +32,5 @@ public:
 
 	void Update() override;
 
-	spe::Sprite* getPlayer() { return this->m_ptr_player; }
+	spe::Sprite* GetPlayer() { return this->m_ptr_Player; }
 };

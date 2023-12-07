@@ -13,7 +13,7 @@ spe::Engine::Engine()
 
 	this->m_Game.EngineConfig = spe::EngineConfig(&this->m_SceneHandler, &this->m_Camera, &this->m_BackgroundColor);
 
-	spe::Input::setEvent(&this->m_Window.Event);
+	spe::Input::SetEvent(&this->m_Window.Event);
 	spe::Style::RenderStyle();
 
 	spe::GUI::SetCamera(&this->m_Camera);
@@ -66,14 +66,14 @@ void spe::Engine::UpdateComponents()
 	{
 		spe::Sprite* sprite = *it;
 
-		sprite->animator.update();
-		sprite->collider.Update(this->m_SceneHandler.SpriteRepository);
-		sprite->physicsBody.Update();
+		sprite->Animator.Update();
+		sprite->Collider.Update(this->m_SceneHandler.SpriteRepository);
+		sprite->Physicsbody.Update();
 
-		this->m_SceneHandler.LightRepository.updateLightSource(sprite, &this->m_Camera);
-		this->m_Window.Draw(sprite, &this->m_SceneHandler.LightRepository.getShader());
+		this->m_SceneHandler.LightRepository.UpdateLightSource(sprite, &this->m_Camera);
+		this->m_Window.Draw(sprite, &this->m_SceneHandler.LightRepository.GetShader());
 	}
-	this->m_SceneHandler.LightRepository.updateArrays();
+	this->m_SceneHandler.LightRepository.UpdateArrays();
 
 	this->m_Window.Display();
 }
@@ -82,8 +82,8 @@ void spe::Engine::UpdateComponents()
 
 void spe::Engine::Update()
 {
-	spe::Time::update();
-	if (spe::Time::s_time_passed <= 0.5f)
+	spe::Time::Update();
+	if (spe::Time::s_TimePassed <= 0.5f)
 	{
 		return;
 	}

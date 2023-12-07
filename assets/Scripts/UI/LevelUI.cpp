@@ -8,13 +8,13 @@ void LevelUI::Start(spe::EngineConfig& config)
 
 void LevelUI::Update()
 {
-	if (this->m_ptr_Player->collider.collided)
+	if (this->m_ptr_Player->Collider.Collided)
 	{
-		spe::Sprite* spr = this->m_ptr_Player->collider.CollidedWithTag("Note-Main");
+		spe::Sprite* spr = this->m_ptr_Player->Collider.CollidedWithTag("Note-Main");
 		if (spr != nullptr)
 		{
-		   spe::Vector2 pos = spr->transform.GetPosition();
-		   pos.y += 100;
+		   spe::Vector2 pos = spr->Transform.GetPosition();
+		   pos.Y += 100;
 		   UI::SetCursorCamera(pos);
 
 
@@ -24,7 +24,7 @@ void LevelUI::Update()
 			UI::SetFontScale(D_SCALE + 2.0f);
 
 			if (UI::Button("Read note [E]")
-				||spe::Input::onKeyRelease(spe::KeyBoardCode::E))
+				||spe::Input::OnKeyRelease(spe::KeyBoardCode::E))
 			{
 				this->ReadingNote = true;
 			}
@@ -39,7 +39,7 @@ void LevelUI::Update()
 
 				UI::End();
 
-				if (spe::Input::onKeyRelease(spe::KeyBoardCode::Escape))
+				if (spe::Input::OnKeyRelease(spe::KeyBoardCode::Escape))
 				{
 					this->ReadingNote = false;
 				}

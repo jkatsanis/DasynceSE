@@ -1,2 +1,11 @@
-﻿  LevelUI.cpp
+﻿  Game.cpp
+  PlayerController.cpp
+  Slide.cpp
+  WallJump.cpp
+  LevelUI.cpp
+  Engine.cpp
+  GUI.cpp
+  Main.cpp
+  Physics.cpp
+  Generating Code...
   DasynceSE.vcxproj -> C:\Dev\C++\DasynceSE\Build\Debug\DasynceSE.exe
