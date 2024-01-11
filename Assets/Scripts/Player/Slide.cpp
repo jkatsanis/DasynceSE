@@ -16,9 +16,6 @@ bool Slide::slideCondition(const bool& is_walking)
 	bool a = spe::Input::OnKeyHold(spe::KeyBoardCode::A) && !spe::Input::OnKeyHold(spe::KeyBoardCode::D);
 	bool b = !spe::Input::OnKeyHold(spe::KeyBoardCode::A) && spe::Input::OnKeyHold(spe::KeyBoardCode::D);
 
-	bool ad = spe::Input::OnKeyHold(spe::KeyBoardCode::A);
-	bool da = spe::Input::OnKeyHold(spe::KeyBoardCode::D);
-
 	return (spe::Input::OnKeyPress(spe::KeyBoardCode::LShift) && is_walking
 		&& (a || b));
 }

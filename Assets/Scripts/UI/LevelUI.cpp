@@ -44,7 +44,22 @@ void LevelUI::Update()
 					this->ReadingNote = false;
 				}
 			}
+		}
 
+		spe::Sprite* spr2 = this->m_ptr_Player->Collider.CollidedWithName("Kanal_Down");
+		if (spr2 != nullptr)
+		{
+			spe::Vector2 pos = spr2->Transform.GetPosition();
+			pos.Y += 100;
+
+			UI::SetCursorCamera(pos);
+			UI::SetFontScale(D_SCALE + 2.0f);
+
+			if (UI::Button("Climb Down [S]")
+				|| spe::Input::OnKeyRelease(spe::KeyBoardCode::S))
+			{
+				this->m_ptr_Player->Transform.Teleport(spe::Vector2(698.76f, -1185.32f));
+			}
 		}
 	}
 }
