@@ -69,7 +69,7 @@ void spe::Engine::UpdateComponents()
 	
 		this->m_SceneHandler.LightRepository.UpdateLightSource(sprite, &this->m_Camera);
 
-		if (!sprite->UseSprite(this->m_Camera))
+		if (!sprite->UseSprite(this->m_Camera, 1))
 		{
 			continue;
 		}
@@ -78,7 +78,7 @@ void spe::Engine::UpdateComponents()
 		sprite->Collider.Update(this->m_SceneHandler.SpriteRepository);
 		sprite->Physicsbody.Update();
 
-		this->m_Window.Draw(sprite, &this->m_SceneHandler.LightRepository.GetShader());
+		this->m_Window.Draw(sprite, &this->m_SceneHandler.LightRepository.GetShader(), false);
 	}
 	this->m_SceneHandler.LightRepository.UpdateArrays();
 

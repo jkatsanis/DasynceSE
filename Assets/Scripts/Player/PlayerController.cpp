@@ -34,10 +34,9 @@ void PlayerController::Update()
 	// this->m_wall_jump.update(this->m_grounded);
 
 
-	spe::Vector2 pos = spe::Vector2(this->m_ptr_Player->Transform.GetPosition().X, this->m_ptr_Player->Transform.GetPosition().Y + 170);
+	spe::Vector2 pos = spe::Vector2(this->m_ptr_Player->Transform.GetPosition().X, this->m_ptr_Player->Transform.GetPosition().Y + 100);
 	pos.Y *= -1;
 	this->m_ptr_Camera->Position = pos;
-	this->m_ptr_Camera->SetZoom(1);
 }
 
 void PlayerController::AnimationControll()
