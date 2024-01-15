@@ -97,7 +97,7 @@ void PlayerController::Jump()
 	{
 		this->m_Grounded = false;
 		this->m_ptr_Player->Physicsbody.Velocity.Y = 0;
-		spe::Physics::AddForce(this->m_ptr_Player, spe::Vector2(0, 1), 400);
+		spe::Physics::AddForce(this->m_ptr_Player, spe::Vector2(0, 1), 600);
 	}
 }
 void PlayerController::DownAttack()
