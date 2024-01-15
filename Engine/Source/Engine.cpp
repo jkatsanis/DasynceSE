@@ -40,6 +40,7 @@ void spe::Engine::Init()
 
 	this->m_SceneHandler.LoadScene(this->m_SceneHandler.TotalScenes[0], this->m_Camera, this->m_BackgroundColor);
 
+	spe::BoxCollider::InitCameraCollider(this->m_SceneHandler.LightRepository);
 	// this->m_Camera.reset();
 }
 
@@ -67,12 +68,12 @@ void spe::Engine::UpdateComponents()
 	{
 		spe::Sprite* sprite = *it;
 	
-		this->m_SceneHandler.LightRepository.UpdateLightSource(sprite, &this->m_Camera);
-
-		if (!sprite->UseSprite(this->m_Camera, 1))
+		if (!spe::BoxCollider::ProcessSprite(sprite, this->m_Camera))
 		{
 			continue;
 		}
+
+		this->m_SceneHandler.LightRepository.UpdateLightSource(sprite, &this->m_Camera);
 
 		sprite->Animator.Update();
 		sprite->Collider.Update(this->m_SceneHandler.SpriteRepository);
