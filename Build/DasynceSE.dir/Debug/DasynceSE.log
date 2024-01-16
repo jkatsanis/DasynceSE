@@ -1,4 +1,14 @@
-﻿  PlayerController.cpp
+﻿  Building Custom Rule C:/Dev/DasynceSE/CMakeLists.txt
+  Game.cpp
+  PlayerController.cpp
+  Slide.cpp
+  WallJump.cpp
+  LevelUI.cpp
+C:\Dev\DasynceSE\Assets\Scripts\UI\LevelUI.cpp(77,67): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Dev\DasynceSE\Assets\Scripts\UI\LevelUI.cpp(77,57): warning C4305: 'argument': truncation from 'double' to 'float'
   Engine.cpp
-  Code wird generiert...
+  GUI.cpp
+  Main.cpp
+  Physics.cpp
+  Generating Code...
   DasynceSE.vcxproj -> C:\Dev\DasynceSE\Build\Debug\DasynceSE.exe
