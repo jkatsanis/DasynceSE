@@ -92,7 +92,7 @@ void spe::Engine::UpdateComponents()
 void spe::Engine::Update()
 {
 	spe::Time::Update();
-	if (spe::Time::s_TimePassed <= 0.5f)
+	if (spe::Time::s_TimePassed <= 1.0f)
 	{
 		return;
 	}

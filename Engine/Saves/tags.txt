@@ -3,3 +3,4 @@ none
 Floor
 Player
 Note-Main
+computer-teleport

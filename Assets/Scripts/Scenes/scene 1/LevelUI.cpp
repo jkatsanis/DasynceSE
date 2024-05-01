@@ -4,9 +4,10 @@ void LevelUI::Start(spe::EngineConfig& config)
 {
 	this->m_ptr_Player = config.ptr_Sprites->GetByName("Player");
 	this->ReadingNote = false;
+	this->m_ptr_Game = &config;
 }
 
-void LevelUI::Update()
+void LevelUI::Update(std::function<void(const std::string&)> OnSceneChange)
 {
 	if (this->m_ptr_Player->Collider.Collided)
 	{
@@ -75,6 +76,23 @@ void LevelUI::Update()
 				|| spe::Input::OnKeyRelease(spe::KeyBoardCode::W))
 			{
 				this->m_ptr_Player->Transform.Teleport(spe::Vector2(761.003, -393.936));
+			}
+		}
+
+		spe::Sprite* spr4 = this->m_ptr_Player->Collider.CollidedWithName("computer-teleport");
+		if (spr4 != nullptr)
+		{
+ 			spe::Vector2 pos = spr4->Transform.GetPosition();
+			pos.Y += 100;
+
+			UI::SetCursorCamera(pos);
+			UI::SetFontScale(D_SCALE + 2.0f);
+
+			if (UI::Button("Climb Up [W]")
+				|| spe::Input::OnKeyRelease(spe::KeyBoardCode::W))
+			{
+				// Change scene
+				OnSceneChange("computer_room");
 			}
 		}
 	}
