@@ -2,12 +2,24 @@
 
 void Game::Start()
 {
-	this->StartScene("scene 1");
+	const std::string scene_name = "scene 1";
+	this->EngineConfig.ptr_SceneHandler->LoadScene(scene_name, *this->EngineConfig.ptr_Camera, *this->EngineConfig.ptr_BackgroundColor);
+
+	this->m_PlayerController.Start(this->EngineConfig);
+	this->m_Camera.Start(this->EngineConfig.ptr_Camera, this->m_PlayerController.GetPlayer());
+
+
+	this->StartScene(scene_name);
+
+	spe::Sprite* player = this->EngineConfig.ptr_Sprites->GetByName("Player");
+	player->DontDeleteOnSceneSwap = true;
 }
 
 void Game::StartScene(const std::string& scene)
 {
 	this->EngineConfig.ptr_SceneHandler->LoadScene(scene, *this->EngineConfig.ptr_Camera, *this->EngineConfig.ptr_BackgroundColor);
+
+	this->EngineConfig.ptr_Sprites->Add(this->m_PlayerController.GetPlayer());
 
 	if (this->EngineConfig.ptr_SceneHandler->CurrentScene == "scene 1")
 	{
@@ -18,9 +30,6 @@ void Game::StartScene(const std::string& scene)
 	{
 		this->m_ComputerRoom.Start(this->EngineConfig);
 	}
-
-	this->m_PlayerController.Start(this->EngineConfig);
-	this->m_Camera.Start(this->EngineConfig.ptr_Camera, this->m_PlayerController.GetPlayer());
 }
 
 void Game::Update()
@@ -51,26 +60,5 @@ void Game::Update()
 
 void Game::OnSceneChange(const std::string& sceneName)
 {
-	spe::Sprite* player = this->EngineConfig.ptr_Sprites->GetByName("Player");
-	spe::Sprite* copy = new spe::Sprite(*player);
-
-	this->EngineConfig.ptr_SceneHandler->LoadScene(sceneName, *this->EngineConfig.ptr_Camera, *this->EngineConfig.ptr_BackgroundColor);
-
-	copy->Name = "Player";
-	this->EngineConfig.ptr_Sprites->Add(copy);
-
-	if (this->EngineConfig.ptr_SceneHandler->CurrentScene == "scene 1")
-	{
-		this->m_LevelUI.Start(this->EngineConfig);
-	}
-
-	if (this->EngineConfig.ptr_SceneHandler->CurrentScene == "computer_room")
-	{
-		this->m_ComputerRoom.Start(this->EngineConfig);
-	}
-
-	this->m_PlayerController.Start(this->EngineConfig);
-	this->m_Camera.Start(this->EngineConfig.ptr_Camera, this->m_PlayerController.GetPlayer());
-
-	copy->Transform.Teleport(spe::Vector2(0, 0));
+	this->StartScene(sceneName);
 }

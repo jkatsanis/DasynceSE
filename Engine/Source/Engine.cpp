@@ -79,7 +79,7 @@ void spe::Engine::UpdateComponents()
 		sprite->Collider.Update(this->m_SceneHandler.SpriteRepository);
 		sprite->Physicsbody.Update();
 
-		this->m_Window.Draw(sprite, &this->m_SceneHandler.LightRepository.GetShader(), false);
+		this->m_Window.DrawGame(sprite, &this->m_SceneHandler.LightRepository.GetShader(), false);
 	}
 	this->m_SceneHandler.LightRepository.UpdateArrays();
 
