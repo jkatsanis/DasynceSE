@@ -5,6 +5,9 @@ void LevelUI::Start(spe::EngineConfig& config)
 	this->m_ptr_Player = config.ptr_Sprites->GetByName("Player");
 	this->ReadingNote = false;
 	this->m_ptr_Game = &config;
+
+	spe::Sprite* woa = config.ptr_Sprites->GetByName("Water_1");
+	woa->Animator.Play("WaterFlow");
 }
 
 void LevelUI::Update(std::function<void(const std::string&)> OnSceneChange)

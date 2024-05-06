@@ -22,6 +22,6 @@ void PlayerCamera::Update()
 
 	const float smoothingFactor = 0.025f; // Adjust this value for desired smoothness
 	spe::Vector2 targetCameraPos = spe::Physics::Lerp(this->m_ptr_Camera->Position, playerPos, smoothingFactor);
-	this->m_ptr_Camera->Position = targetCameraPos;
+    this->m_ptr_Camera->Position = targetCameraPos;
 }
 
