@@ -16,6 +16,8 @@ private:
 	PlayerCamera m_Camera;
 	ComputerRoom m_ComputerRoom;
 
+	spe::Sprite* m_Player;
+
 public:
 	spe::EngineConfig EngineConfig;
 	

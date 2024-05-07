@@ -5,6 +5,7 @@ void PlayerCamera::Start(spe::Camera* ptr, const spe::Sprite* pl)
 	this->m_ptr_Camera = ptr;
 	this->m_ptr_Player = pl;
 	this->m_Timer = 0.0f;
+	ptr->SetZoom(1);
 }
 
 void PlayerCamera::Update()

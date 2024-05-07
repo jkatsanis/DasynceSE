@@ -3,23 +3,22 @@
 void Game::Start()
 {
 	const std::string scene_name = "scene 1";
-	this->EngineConfig.ptr_SceneHandler->LoadScene(scene_name, *this->EngineConfig.ptr_Camera, *this->EngineConfig.ptr_BackgroundColor);
+
+	this->m_Player = spe::PrefabRepository::GetPrefabByName("Player");
+
+	this->EngineConfig.ptr_Sprites->Add(this->m_Player);
+
+	this->EngineConfig.SetNoDeleteOnSceneSwap(this->m_Player);
 
 	this->m_PlayerController.Start(this->EngineConfig);
-	this->m_Camera.Start(this->EngineConfig.ptr_Camera, this->m_PlayerController.GetPlayer());
-
+	this->m_Camera.Start(this->EngineConfig.ptr_Camera, this->m_Player);
 
 	this->StartScene(scene_name);
-
-	spe::Sprite* player = this->EngineConfig.ptr_Sprites->GetByName("Player");
-	player->DontDeleteOnSceneSwap = true;
 }
 
 void Game::StartScene(const std::string& scene)
 {
-	this->EngineConfig.ptr_SceneHandler->LoadScene(scene, *this->EngineConfig.ptr_Camera, *this->EngineConfig.ptr_BackgroundColor);
-
-	this->EngineConfig.ptr_Sprites->Add(this->m_PlayerController.GetPlayer());
+	this->EngineConfig.LoadScene(scene);
 
 	if (this->EngineConfig.ptr_SceneHandler->CurrentScene == "scene 1")
 	{
@@ -60,5 +59,13 @@ void Game::Update()
 
 void Game::OnSceneChange(const std::string& sceneName)
 {
+	if (sceneName == "computer_room")
+	{
+		this->m_PlayerController.GetPlayer()->Transform.Teleport(COMPUTER_ROOM_TP_POSITION);
+	}
+	else if (sceneName == "scene 1")
+	{
+		this->m_PlayerController.GetPlayer()->Transform.Teleport(KANAL_TP_POSITION);
+	}
 	this->StartScene(sceneName);
 }
