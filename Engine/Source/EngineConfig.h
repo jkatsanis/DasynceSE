@@ -10,16 +10,29 @@ namespace spe
 		spe::Camera* ptr_Camera;
 		spe::Vector3* ptr_BackgroundColor;
 		spe::SpriteRepository* ptr_Sprites;
+		bool ReloadSortingLayersOnSceneSwap;
 
-		EngineConfig()
-			: ptr_SceneHandler(nullptr), ptr_Camera(nullptr), ptr_BackgroundColor(nullptr), ptr_Sprites(nullptr)
-		{
-		}
+		EngineConfig() = default;
 
 		EngineConfig(spe::SceneHandler* sceneHandler, spe::Camera* camera, spe::Vector3* backgroundColor)
-			: ptr_SceneHandler(sceneHandler), ptr_Camera(camera), ptr_BackgroundColor(backgroundColor)
+			: ptr_SceneHandler(sceneHandler), ptr_Camera(camera), ptr_BackgroundColor(backgroundColor), ReloadSortingLayersOnSceneSwap(false)
 		{
 			this->ptr_Sprites = &this->ptr_SceneHandler->SpriteRepository;
+		}
+
+		void SetNoDeleteOnSceneSwap(spe::Sprite* spr)
+		{
+			spr->DontDeleteOnSceneSwap = true;
+			this->ReloadSortingLayersOnSceneSwap = true;
+		}
+
+		void LoadScene(const std::string& scene)
+		{
+			this->ptr_SceneHandler->LoadScene(scene, *this->ptr_Camera, *this->ptr_BackgroundColor);
+			if (this->ReloadSortingLayersOnSceneSwap)
+			{
+				this->ptr_Sprites->SortSpritesByLayer();
+			}
 		}
 	};
 }

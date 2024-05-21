@@ -38,6 +38,8 @@ void spe::Engine::Init()
 	spe::Initializer::InitScenes(this->m_SceneHandler, PATH_TO_SCENE_FILE);
 	spe::Initializer::IntiHighestSpriteID(this->m_SceneHandler.SpriteRepository, PATH_TO_HIGHEST_INDEX);
 
+	spe::PrefabRepository::LoadPrefabsInMemory(this->m_SceneHandler.LightRepository);
+
 	this->m_SceneHandler.LoadScene(this->m_SceneHandler.TotalScenes[0], this->m_Camera, this->m_BackgroundColor);
 
 	spe::BoxCollider::InitCameraCollider(this->m_SceneHandler.LightRepository);
@@ -59,7 +61,6 @@ void spe::Engine::UpdateComponents()
 	ImGui::SetWindowFontScale(spe::Style::s_DefaultFontSize + 0.5f);
 	ImGui::End();
 
-
 	std::list<spe::Sprite*>& sprites = this->m_SceneHandler.SpriteRepository.GetSprites();
 
 	this->m_Window.Clear();
@@ -79,7 +80,7 @@ void spe::Engine::UpdateComponents()
 		sprite->Collider.Update(this->m_SceneHandler.SpriteRepository);
 		sprite->Physicsbody.Update();
 
-		this->m_Window.Draw(sprite, &this->m_SceneHandler.LightRepository.GetShader(), false);
+		this->m_Window.DrawGame(sprite, &this->m_SceneHandler.LightRepository.GetShader(), false);
 	}
 	this->m_SceneHandler.LightRepository.UpdateArrays();
 

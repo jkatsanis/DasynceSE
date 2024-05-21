@@ -2,12 +2,23 @@
 
 void Game::Start()
 {
-	this->StartScene("scene 1");
+	const std::string scene_name = "scene 1";
+
+	this->m_Player = spe::PrefabRepository::GetPrefabByName("Player");
+
+	this->EngineConfig.ptr_Sprites->Add(this->m_Player);
+
+	this->EngineConfig.SetNoDeleteOnSceneSwap(this->m_Player);
+
+	this->m_PlayerController.Start(this->EngineConfig);
+	this->m_Camera.Start(this->EngineConfig.ptr_Camera, this->m_Player);
+
+	this->StartScene(scene_name);
 }
 
 void Game::StartScene(const std::string& scene)
 {
-	this->EngineConfig.ptr_SceneHandler->LoadScene(scene, *this->EngineConfig.ptr_Camera, *this->EngineConfig.ptr_BackgroundColor);
+	this->EngineConfig.LoadScene(scene);
 
 	if (this->EngineConfig.ptr_SceneHandler->CurrentScene == "scene 1")
 	{
@@ -18,9 +29,6 @@ void Game::StartScene(const std::string& scene)
 	{
 		this->m_ComputerRoom.Start(this->EngineConfig);
 	}
-
-	this->m_PlayerController.Start(this->EngineConfig);
-	this->m_Camera.Start(this->EngineConfig.ptr_Camera, this->m_PlayerController.GetPlayer());
 }
 
 void Game::Update()
@@ -51,26 +59,13 @@ void Game::Update()
 
 void Game::OnSceneChange(const std::string& sceneName)
 {
-	spe::Sprite* player = this->EngineConfig.ptr_Sprites->GetByName("Player");
-	spe::Sprite* copy = new spe::Sprite(*player);
-
-	this->EngineConfig.ptr_SceneHandler->LoadScene(sceneName, *this->EngineConfig.ptr_Camera, *this->EngineConfig.ptr_BackgroundColor);
-
-	copy->Name = "Player";
-	this->EngineConfig.ptr_Sprites->Add(copy);
-
-	if (this->EngineConfig.ptr_SceneHandler->CurrentScene == "scene 1")
+	if (sceneName == "computer_room")
 	{
-		this->m_LevelUI.Start(this->EngineConfig);
+		this->m_PlayerController.GetPlayer()->Transform.Teleport(COMPUTER_ROOM_TP_POSITION);
 	}
-
-	if (this->EngineConfig.ptr_SceneHandler->CurrentScene == "computer_room")
+	else if (sceneName == "scene 1")
 	{
-		this->m_ComputerRoom.Start(this->EngineConfig);
+		this->m_PlayerController.GetPlayer()->Transform.Teleport(KANAL_TP_POSITION);
 	}
-
-	this->m_PlayerController.Start(this->EngineConfig);
-	this->m_Camera.Start(this->EngineConfig.ptr_Camera, this->m_PlayerController.GetPlayer());
-
-	copy->Transform.Teleport(spe::Vector2(0, 0));
+	this->StartScene(sceneName);
 }
