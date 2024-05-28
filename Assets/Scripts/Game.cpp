@@ -11,7 +11,6 @@ void Game::Start()
 	this->EngineConfig.SetNoDeleteOnSceneSwap(this->m_Player);
 
 	this->m_PlayerController.Start(this->EngineConfig);
-	this->m_Camera.Start(this->EngineConfig.ptr_Camera, this->m_Player);
 
 	this->StartScene(scene_name);
 }
@@ -19,6 +18,8 @@ void Game::Start()
 void Game::StartScene(const std::string& scene)
 {
 	this->EngineConfig.LoadScene(scene);
+
+	this->m_Camera.Start(this->EngineConfig.ptr_Camera, this->m_Player);
 
 	if (this->EngineConfig.ptr_SceneHandler->CurrentScene == "scene 1")
 	{
