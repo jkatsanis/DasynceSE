@@ -5,3 +5,5 @@
 - mkdir build
 - cd build
 - cmake ..
+
+This game is still in development, so it has alot of bugs and wierd things. 
