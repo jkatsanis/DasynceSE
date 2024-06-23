@@ -8,8 +8,8 @@ void PlayerController::Start(spe::EngineConfig& game)
 	this->m_ptr_Player = game.ptr_Sprites->GetByName("Player");
 	this->m_Scale = this->m_ptr_Player->Transform.GetScale();
 	this->m_ptr_Player->Animator.Play("idle");
-
 	this->m_ptr_Camera = game.ptr_Camera;
+
 	/////////////////////
 	// PLAYER INITIALIZED
 	/////////////////////
@@ -22,6 +22,7 @@ void PlayerController::Start(spe::EngineConfig& game)
 	this->m_WallJump.start(this->m_ptr_Player);
 
 	this->m_ptr_Camera->SetZoom(0.7f);
+	this->HealthBar.Start(100, game);
 }
 
 void PlayerController::Update()
@@ -30,6 +31,10 @@ void PlayerController::Update()
 	this->LeftRight();
 	this->Jump();
 
+	if (spe::Input::OnKeyRelease(spe::KeyBoardCode::K))
+	{
+		this->HealthBar.Damage(5);
+	}
 	// this->m_slide.update(this->m_walking);
 	// this->m_wall_jump.update(this->m_grounded);
 }
