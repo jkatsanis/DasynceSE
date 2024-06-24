@@ -24,6 +24,11 @@ namespace spe
 		{
 			spr->DontDeleteOnSceneSwap = true;
 			this->ReloadSortingLayersOnSceneSwap = true;
+
+			for (size_t i = 0; i < spr->ptr_Childs.size(); i++)
+			{
+				this->SetNoDeleteOnSceneSwap(spr->ptr_Childs[i]);
+			}
 		}
 
 		void LoadScene(const std::string& scene)

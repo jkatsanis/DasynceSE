@@ -2,6 +2,7 @@
 
 #include "Slide.h"
 #include "WallJump.h"
+#include "Scripts/General/Helthbar/Healthbar.h"
 
 #define PLAYER_SPEED 800
 #define DOWN_ATTACK_SPEED -1000
@@ -26,8 +27,9 @@ private:
 	void Jump();
 	void DownAttack();
 
-
 public:
+	Healthbar HealthBar;
+
 	void Start(spe::EngineConfig& game);
 
 	void Update() override;
