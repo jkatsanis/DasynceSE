@@ -71,8 +71,10 @@ void spe::Engine::UpdateComponents()
 	
 		if (!spe::BoxCollider::ProcessSprite(sprite, this->m_Camera))
 		{
+			sprite->Process = false;
 			continue;
 		}
+		sprite->Process = true;
 
 		this->m_SceneHandler.LightRepository.UpdateLightSource(sprite, &this->m_Camera);
 

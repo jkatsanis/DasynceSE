@@ -13,6 +13,8 @@ void Game::Start()
 	this->m_PlayerController.Start(this->EngineConfig);
 
 	this->StartScene(scene_name);
+
+	this->m_EnemyHandler.Start(this->EngineConfig);
 }
 
 void Game::StartScene(const std::string& scene)
@@ -42,6 +44,9 @@ void Game::Update()
 
 	// Cmaera
 	this->m_Camera.Update();
+
+	// Enemy update
+	this->m_EnemyHandler.Update();	
 
 	if (this->EngineConfig.ptr_SceneHandler->CurrentScene == "scene 1")
 	{

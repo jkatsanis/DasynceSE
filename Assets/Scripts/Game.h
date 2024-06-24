@@ -7,6 +7,7 @@
 #include "Scenes/scene 1/LevelUI.h"
 #include "Camera/PlayerCamera.h"
 #include "Scenes/computer_room/ComputerRoom.h"
+#include "Scripts/Enemy/EnemyHandler.h"
 
 class Game : public spe::IScript
 {		
@@ -15,6 +16,7 @@ private:
 	LevelUI m_LevelUI;
 	PlayerCamera m_Camera;
 	ComputerRoom m_ComputerRoom;
+	EnemyHandler m_EnemyHandler;
 
 	spe::Sprite* m_Player;
 

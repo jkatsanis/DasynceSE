@@ -22,7 +22,7 @@ void PlayerController::Start(spe::EngineConfig& game)
 	this->m_WallJump.start(this->m_ptr_Player);
 
 	this->m_ptr_Camera->SetZoom(0.7f);
-	this->HealthBar.Start(100, game);
+	this->HealthBar.Start(100, game, this->m_ptr_Player);
 }
 
 void PlayerController::Update()
