@@ -15,6 +15,8 @@ private:
 	int m_TotalHealth;
 
 public:
+	void DontDeleteOnSceneSwap(spe::EngineConfig& cnfg);
+
     // Can get called on start by the game/sub class
 	void Start(int health, spe::EngineConfig& cnfg, spe::Sprite* to);
 

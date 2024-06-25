@@ -1,7 +1,15 @@
 #include "Healthbar.h"
 
+void Healthbar::DontDeleteOnSceneSwap(spe::EngineConfig& cnfg)
+{
+	cnfg.DontDeleteOnSceneSwap(this->m_HealthBar); // Works recursivly! 
+}
+
 void Healthbar::Start(int health, spe::EngineConfig& cnfg, spe::Sprite* to)
 {
+	this->m_Health = health;
+	this->m_TotalHealth = health;
+
 	this->m_HealthBar = spe::PrefabRepository::GetPrefabByName("Healthbar");
 
 	if (this->m_HealthBar == nullptr)
@@ -9,15 +17,11 @@ void Healthbar::Start(int health, spe::EngineConfig& cnfg, spe::Sprite* to)
 		spe::Log::LogString("[ERROR] Couldnt find prefab file somethingf idk shit");
 		return;
 	}
+
 	this->m_HealthRect = this->m_HealthBar->ptr_Childs[0];
 
 	this->m_HealthRect->Name = "HealthRect " + std::to_string(Healthbar::s_m_TotalHealthBars);
 	this->m_HealthBar->Name = "Healthbar " + std::to_string(Healthbar::s_m_TotalHealthBars);
-
-	cnfg.SetNoDeleteOnSceneSwap(this->m_HealthBar);
-	this->m_Health = health;
-	this->m_TotalHealth = health;
-
 
 	cnfg.ptr_Sprites->Add(this->m_HealthBar);
 

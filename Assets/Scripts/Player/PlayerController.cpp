@@ -23,6 +23,7 @@ void PlayerController::Start(spe::EngineConfig& game)
 
 	this->m_ptr_Camera->SetZoom(0.7f);
 	this->HealthBar.Start(100, game, this->m_ptr_Player);
+	this->HealthBar.DontDeleteOnSceneSwap(game);
 }
 
 void PlayerController::Update()

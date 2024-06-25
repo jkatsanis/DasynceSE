@@ -8,7 +8,7 @@ void Game::Start()
 
 	this->EngineConfig.ptr_Sprites->Add(this->m_Player);
 
-	this->EngineConfig.SetNoDeleteOnSceneSwap(this->m_Player);
+	this->EngineConfig.DontDeleteOnSceneSwap(this->m_Player);
 
 	this->m_PlayerController.Start(this->EngineConfig);
 
