@@ -27,10 +27,9 @@ void MonkeyBehaviour::SpawnMonkey(const spe::Vector2& position)
 	monkey->Transform.SetPosition(position);
 	monkey->Name = "Monkey " + std::to_string(this->m_Monkeys.size());
 
-	mon.SetMonkeySprite(monkey);
-	mon.Start(*this->m_ptr_Config);
-
 	this->m_ptr_Config->ptr_Sprites->Add(monkey);
+	mon.Start(*this->m_ptr_Config, monkey);
+
 	this->m_Monkeys.push_back(std::move(mon));
 }
 

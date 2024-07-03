@@ -1,0 +1,8 @@
+attack
+6574
+False
+0.000000;Assets\Sprites\Enemies\Monkey\Monkey.png
+14.000000;Assets\Sprites\Enemies\Monkey\\Attack\1.png
+12.000000;Assets\Sprites\Enemies\Monkey\\Attack\2.png
+10.000000;Assets\Sprites\Enemies\Monkey\\Attack\3.png
+17.000000;Assets\\Sprites\Enviroment\Background\image.png

@@ -1,7 +1,8 @@
 #include "Monkey.h"
 
-void Monkey::Start(spe::EngineConfig& config)
+void Monkey::Start(spe::EngineConfig& config, spe::Sprite* sprite)
 {
+	this->m_MonkeySprite = sprite;
 	this->m_Healthbar.Start(100, config, this->m_MonkeySprite);
 }
 
