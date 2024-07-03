@@ -15,7 +15,7 @@ void MonkeyBehaviour::Update()
 {
 	for (size_t i = 0; i < this->m_Monkeys.size(); i++)
 	{
-		this->m_Monkeys[i].Update(this->m_ptr_Player->Transform.GetPosition());
+		this->m_Monkeys[i].Update(this->m_ptr_Player);
 	}
 }
 

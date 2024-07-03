@@ -10,7 +10,7 @@ class MonkeyBehaviour : public spe::IScript
 private:
     std::vector<Monkey> m_Monkeys;
     spe::EngineConfig* m_ptr_Config;
-    const spe::Sprite* m_ptr_Player;
+    spe::Sprite* m_ptr_Player;
 
 public:
     MonkeyBehaviour() = default;

@@ -12,9 +12,11 @@ private:
     spe::Sprite* m_MonkeySprite = nullptr;
     Healthbar m_Healthbar;
 
+    void Attack(spe::Sprite* player);
+
 public:
     void Start(spe::EngineConfig& config, spe::Sprite* sprite); 
 
     // Can get called 1 time per frame by the game/sub class
-    void Update(const spe::Vector2& player_pos);
+    void Update(spe::Sprite* player);
 };
