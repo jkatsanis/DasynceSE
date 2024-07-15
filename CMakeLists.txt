@@ -1,4 +1,7 @@
 # Template Solution
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+set(CMAKE_BUILD_TYPE Debug) # CHANGE WHEN BUILDING IN RELEASE TO Release
+# !!!!!!!!!!!!!!!
 
 cmake_minimum_required(VERSION 3.10)
 
@@ -6,7 +9,6 @@ get_filename_component(PROJECT_FOLDER ${CMAKE_CURRENT_SOURCE_DIR} NAME)
 
 project(${PROJECT_FOLDER})
 set(CMAKE_CXX_STANDARD 17)
-
 
 file(GLOB_RECURSE GAME_SOURCES
     "Engine/Source/*.cpp"
@@ -22,10 +24,6 @@ add_executable(${PROJECT_FOLDER} ${GAME_SOURCES})
 file(READ "Engine\\Saves\\enginepath.txt" FILE_CONTENT)
 file(TO_CMAKE_PATH "${FILE_CONTENT}" FILE_CONTENT)
 string(STRIP "${FILE_CONTENT}" FILE_CONTENT)
-set(PATH_LIBRARIES "${FILE_CONTENT}/Core/Source/Include/LIB")
-
-set(ENGINE_LIBRARY_DEBUG "${FILE_CONTENT}/Build/Engine/Debug/Engine.lib")
-set(ENGINE_LIBRARY_RELEASE "${FILE_CONTENT}/Build/Engine/Release/Engine.lib")
 
 set(ADDITIONAL_INCLUDE_PATHS
     Engine/Core/Source
@@ -54,7 +52,37 @@ if(MSVC)
     target_compile_options(${PROJECT_FOLDER} PRIVATE /W4)
 endif()
 
-add_subdirectory(C:/Dev/SpriteEngineUI/Engine/Engine Engine)
-add_subdirectory(C:/Dev/SpriteEngineUI/Engine/ThirdParty/sfml SFML)
-add_subdirectory(C:/Dev/SpriteEngineUI/Engine/ThirdParty ThirdParty)
-add_subdirectory(C:/Dev/SpriteEngineUI/Engine/Framework Framework)
+add_subdirectory(${FILE_CONTENT}/Engine Engine)
+add_subdirectory(${FILE_CONTENT}/ThirdParty/sfml ThirdParty/sfml)
+add_subdirectory(${FILE_CONTENT}/ThirdParty ThirdParty)
+add_subdirectory(${FILE_CONTENT}/Framework Framework)
+
+set(SFML_DLL_DIR "${CMAKE_BINARY_DIR}/ThirdParty/sfml/lib")
+
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    add_custom_command(TARGET ${PROJECT_FOLDER} POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            ${SFML_DLL_DIR}/Debug/sfml-audio-d-2.dll $<TARGET_FILE_DIR:${PROJECT_FOLDER}>
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            ${SFML_DLL_DIR}/Debug/sfml-graphics-d-2.dll $<TARGET_FILE_DIR:${PROJECT_FOLDER}>
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            ${SFML_DLL_DIR}/Debug/sfml-network-d-2.dll $<TARGET_FILE_DIR:${PROJECT_FOLDER}>
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            ${SFML_DLL_DIR}/Debug/sfml-system-d-2.dll $<TARGET_FILE_DIR:${PROJECT_FOLDER}>
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            ${SFML_DLL_DIR}/Debug/sfml-window-d-2.dll $<TARGET_FILE_DIR:${PROJECT_FOLDER}>
+    )
+elseif(CMAKE_BUILD_TYPE STREQUAL "Release")
+    add_custom_command(TARGET ${PROJECT_FOLDER} POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            ${SFML_DLL_DIR}/Release/sfml-audio-2.dll $<TARGET_FILE_DIR:${PROJECT_FOLDER}>
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            ${SFML_DLL_DIR}/Release/sfml-graphics-2.dll $<TARGET_FILE_DIR:${PROJECT_FOLDER}>
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            ${SFML_DLL_DIR}/Release/sfml-network-2.dll $<TARGET_FILE_DIR:${PROJECT_FOLDER}>
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            ${SFML_DLL_DIR}/Release/sfml-system-2.dll $<TARGET_FILE_DIR:${PROJECT_FOLDER}>
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            ${SFML_DLL_DIR}/Release/sfml-window-2.dll $<TARGET_FILE_DIR:${PROJECT_FOLDER}>
+    )
+endif()
