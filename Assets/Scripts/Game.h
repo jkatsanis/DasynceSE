@@ -12,7 +12,7 @@
 class Game : public spe::IScript
 {		
 private:
-	PlayerController m_PlayerController;
+	PlayerController* m_ptr_PlayerController;
 	LevelUI m_LevelUI;
 	PlayerCamera m_Camera;
 	ComputerRoom m_ComputerRoom;
@@ -30,6 +30,9 @@ public:
 
 	// Gets called once per frame
 	void Update() override;
+
+	// Should get called on stop
+	void OnStop();
 
 	void OnSceneChange(const std::string& sceneName);
 };

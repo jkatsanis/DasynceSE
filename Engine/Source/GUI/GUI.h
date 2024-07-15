@@ -1,6 +1,5 @@
 #pragma once
 
-#include <ImGui/ImGUISFML.h>
 #include <iostream>
 
 #include "Utility/Style.h"
