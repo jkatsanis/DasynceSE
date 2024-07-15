@@ -3,6 +3,7 @@
 // Included from the editor-src
 #include <Source/SpriteEngine.h>
 
+#include "Scripts/Player/PlayerController.h"
 #include "Monkey.h"
 
 class MonkeyBehaviour : public spe::IScript
@@ -10,7 +11,6 @@ class MonkeyBehaviour : public spe::IScript
 private:
     std::vector<Monkey> m_Monkeys;
     spe::EngineConfig* m_ptr_Config;
-    spe::Sprite* m_ptr_Player;
 
 public:
     MonkeyBehaviour() = default;

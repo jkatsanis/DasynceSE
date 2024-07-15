@@ -10,8 +10,10 @@
 class PlayerController : public spe::IScript
 {
 private:
+	static PlayerController* instance;
+
+private:
 	spe::Camera* m_ptr_Camera;
-	spe::Sprite* m_ptr_Player;
 	spe::Vector2 m_Scale;
 	bool m_Grounded;
 	bool m_Walking;
@@ -27,12 +29,17 @@ private:
 	void Jump();
 	void DownAttack();
 
+	PlayerController() = default;
+
 public:
+	spe::Sprite* ptr_Player;
 	Healthbar HealthBar;
 
 	void Start(spe::EngineConfig& game);
 
 	void Update() override;
 
-	spe::Sprite* GetPlayer() { return this->m_ptr_Player; }
+	static void Shutdown();
+
+	static PlayerController& GetInstance();
 };

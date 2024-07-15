@@ -8,11 +8,11 @@
 #define UI spe::GUI
 
 // Game 
+#include "GameUtils/GameUtils.h"
 #include "Sprite/Sprite.h"
 #include "IScript.h"
 #include "EngineConfig.h"
 #include "Physics/Physics.h"
-#include "GameUtils/GameUtils.h"
 #include "GUI/GUI.h"
 #include "PrefabRepository/PrefabRepository.h"
 	

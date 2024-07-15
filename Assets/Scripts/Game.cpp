@@ -10,12 +10,19 @@ void Game::Start()
 
 	this->EngineConfig.DontDeleteOnSceneSwap(this->m_Player);
 
-	this->m_PlayerController.Start(this->EngineConfig);
+	this->m_ptr_PlayerController = &PlayerController::GetInstance();
+	this->m_ptr_PlayerController->Start(this->EngineConfig);
 
 	this->StartScene(scene_name);
 
 	this->m_EnemyHandler.Start(this->EngineConfig);
 }
+
+void Game::OnStop()
+{
+	PlayerController::Shutdown();
+}
+
 
 void Game::StartScene(const std::string& scene)
 {
@@ -40,7 +47,7 @@ void Game::Update()
 	ImGui::Text(fps.c_str());
 
 	// Movement
-	this->m_PlayerController.Update();
+	this->m_ptr_PlayerController->Update();
 
 	// Cmaera
 	this->m_Camera.Update();
@@ -67,11 +74,11 @@ void Game::OnSceneChange(const std::string& sceneName)
 {
 	if (sceneName == "computer_room")
 	{
-		this->m_PlayerController.GetPlayer()->Transform.Teleport(COMPUTER_ROOM_TP_POSITION);
+		this->m_ptr_PlayerController->ptr_Player->Transform.Teleport(COMPUTER_ROOM_TP_POSITION);
 	}
 	else if (sceneName == "scene 1")
 	{
-		this->m_PlayerController.GetPlayer()->Transform.Teleport(KANAL_TP_POSITION);
+		this->m_ptr_PlayerController->ptr_Player->Transform.Teleport(KANAL_TP_POSITION);
 	}
 	this->StartScene(sceneName);
 }

@@ -27,7 +27,7 @@ void Healthbar::Start(int health, spe::EngineConfig& cnfg, spe::Sprite* to)
 
 	this->m_HealthBar->SetParent(to);
 
-	this->m_HealthBar->Transform.SetPosition(spe::Vector2(this->m_HealthBar->Transform.GetPosition().X, this->m_HealthBar->Transform.GetPosition().Y + 150));
+	this->m_HealthBar->Transform.SetPosition(spe::Vector2(to->Transform.GetPosition().X, to->Transform.GetPosition().Y + 100));
 
 	Healthbar::s_m_TotalHealthBars++;
 }
