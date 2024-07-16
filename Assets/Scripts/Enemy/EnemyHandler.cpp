@@ -10,3 +10,8 @@ void EnemyHandler::Update()
 	this->m_MonkeyBehaviour.Update();
 }
 
+void EnemyHandler::OnSceneChange()
+{
+	this->m_MonkeyBehaviour.OnSceneChange();
+}
+

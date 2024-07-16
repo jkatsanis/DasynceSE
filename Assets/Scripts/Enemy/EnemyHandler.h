@@ -18,4 +18,6 @@ public:
 
     // Can get called 1 time per frame by the game/sub class
     void Update();
+
+    void OnSceneChange();
 };

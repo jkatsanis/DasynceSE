@@ -32,4 +32,9 @@ void MonkeyBehaviour::SpawnMonkey(const spe::Vector2& position)
 	this->m_Monkeys.push_back(std::move(mon));
 }
 
+void MonkeyBehaviour::OnSceneChange()
+{
+	this->m_Monkeys.clear();
+}
+
 // Private

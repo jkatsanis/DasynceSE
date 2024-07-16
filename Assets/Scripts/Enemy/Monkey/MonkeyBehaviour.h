@@ -22,4 +22,6 @@ public:
     void Update();
 
     void SpawnMonkey(const spe::Vector2& position);
+
+    void OnSceneChange();
 };

@@ -1,5 +1,3 @@
-# RUN THE RUNME FILE!!!!!!!!!!!!!!1
-
 # A Game once started in Unity will now continue in the best game engine (real!!)
 
 ## How do i start a game? 
@@ -8,7 +6,7 @@
   - You can open the game in the editor and click on the top right button to play the game. 
 - **COMPILING** the game on the first time will take quite alot of time, the editor freezes while the game runs, and while the game builds. 
 
-### How to build 
+## How to build 
 - mkdir build
 - cd build
 - cmake ..

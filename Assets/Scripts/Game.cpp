@@ -72,6 +72,8 @@ void Game::Update()
 
 void Game::OnSceneChange(const std::string& sceneName)
 {
+	this->m_EnemyHandler.OnSceneChange();
+
 	if (sceneName == "computer_room")
 	{
 		this->m_ptr_PlayerController->ptr_Player->Transform.Teleport(COMPUTER_ROOM_TP_POSITION);
