@@ -55,7 +55,6 @@ endif()
 
 # The libraries that are in the game engine
 add_subdirectory(${FILE_CONTENT}/Engine Engine)
-add_subdirectory(${FILE_CONTENT}/ThirdParty/sfml ThirdParty/sfml)
 add_subdirectory(${FILE_CONTENT}/ThirdParty ThirdParty)
 add_subdirectory(${FILE_CONTENT}/Framework Framework)
 
