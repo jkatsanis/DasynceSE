@@ -1,5 +1,5 @@
 attack
-7256
+7623
 False
 5.000000;Assets\Sprites\Enemies\Monkey\Monkey.png
 12.000000;Assets\Sprites\Enemies\Monkey\Attack\1.png

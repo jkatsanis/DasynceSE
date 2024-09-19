@@ -9,6 +9,7 @@ get_filename_component(PROJECT_FOLDER ${CMAKE_CURRENT_SOURCE_DIR} NAME)
 
 project(${PROJECT_FOLDER})
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /MP")
 
 file(GLOB_RECURSE GAME_SOURCES
     "Engine/Source/*.cpp"
@@ -86,4 +87,8 @@ elseif(CMAKE_BUILD_TYPE STREQUAL "Release")
             COMMAND ${CMAKE_COMMAND} -E copy_if_different
             ${SFML_DLL_DIR}/Release/sfml-window-2.dll $<TARGET_FILE_DIR:${PROJECT_FOLDER}>
     )
+endif()
+
+if (MSVC)
+    add_compile_options(/MP)
 endif()

@@ -11,26 +11,6 @@ void Monkey::Start(spe::EngineConfig& config, spe::Sprite* sprite)
 
 void Monkey::Attack()
 {
-	if (this->m_MonkeySprite->Collider.CollidedWithTag("Player")
-		&& this->m_AttackCooldown >= ATTACK_COOLDOWN)
-	{
-		PlayerController& controller = PlayerController::GetInstance();
-
-		this->m_AttackCooldown = 0.0f;
-
-		controller.ptr_Player->Physicsbody.Friction = 6;
-		this->m_MonkeySprite->Animator.Play("attack");
-
-		if (controller.ptr_Player->Physicsbody.Velocity.X < 500)
-		{
-			this->m_ApplyForce = true;
-			this->m_ForceCooldown = 0.0f;
-		}
-
-		
-		controller.HealthBar.Damage(5);
-	}
-
 	if (this->m_ApplyForce && this->m_ForceCooldown >= 0.2f)
 	{
 		PlayerController& controller = PlayerController::GetInstance();
@@ -44,8 +24,32 @@ void Monkey::Attack()
 		spe::Physics::AddForce(controller.ptr_Player, spe::Vector2(direction, 0), 2000);
 		this->m_ApplyForce = false;
 		this->m_ForceCooldown = 0.0f;
+		return;
 	}
 	this->m_ForceCooldown += spe::Time::s_DeltaTime;
+
+	if (!this->m_MonkeySprite->Collider.Collided)
+	{
+		return;
+	}
+	if (this->m_MonkeySprite->Collider.CollidedWithTag("Player")
+		&& this->m_AttackCooldown >= ATTACK_COOLDOWN)
+	{
+		PlayerController& controller = PlayerController::GetInstance();
+
+		this->m_AttackCooldown = 0.0f;
+
+		this->m_MonkeySprite->Animator.Play("attack");
+
+		if (controller.ptr_Player->Physicsbody.Velocity.X < 500)
+		{
+			this->m_ApplyForce = true;
+			this->m_ForceCooldown = 0.0f;
+		}
+
+
+		controller.HealthBar.Damage(5);
+	}
 }
 
 // Public

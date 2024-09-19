@@ -16,6 +16,7 @@ void Game::Start()
 	this->StartScene(scene_name);
 
 	this->m_EnemyHandler.Start(this->EngineConfig);
+
 }
 
 void Game::OnStop()
@@ -33,6 +34,7 @@ void Game::StartScene(const std::string& scene)
 	if (this->EngineConfig.ptr_SceneHandler->CurrentScene == "scene 1")
 	{
 		this->m_LevelUI.Start(this->EngineConfig);
+		this->EngineConfig.ptr_Camera->SetZoom(0.75f);
 	}
 
 	if(this->EngineConfig.ptr_SceneHandler->CurrentScene == "computer_room")

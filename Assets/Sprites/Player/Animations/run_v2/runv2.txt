@@ -1,5 +1,5 @@
 runv2
-7254
+7531
 True
 0.000000;assets\Sprites\Player\Animations\run_v2\run1.png
 15.000000;assets\Sprites\Player\Animations\run_v2\run2.png

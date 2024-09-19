@@ -1,5 +1,5 @@
 idle
-7256
+7623
 True
 0.000000;Assets\Sprites\Enemies\Monkey\Idle\Idle_One_Monkey.png
 20.000000;Assets\Sprites\Enemies\Monkey\Idle\Idle_Two_Monkey.png
