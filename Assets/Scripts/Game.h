@@ -8,6 +8,7 @@
 #include "Camera/PlayerCamera.h"
 #include "Scenes/computer_room/ComputerRoom.h"
 #include "Scripts/Enemy/EnemyHandler.h"
+#include "Scripts/Gen/LightFlickering.h"
 
 class Game : public spe::IScript
 {		
@@ -17,6 +18,7 @@ private:
 	PlayerCamera m_Camera;
 	ComputerRoom m_ComputerRoom;
 	EnemyHandler m_EnemyHandler;
+	LightFlickering m_LightFlickering;
 
 	spe::Sprite* m_Player;
 
