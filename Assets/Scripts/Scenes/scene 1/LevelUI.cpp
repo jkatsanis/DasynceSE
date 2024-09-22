@@ -78,7 +78,7 @@ void LevelUI::Update(std::function<void(const std::string&)> OnSceneChange)
 			if (UI::Button("Climb Up [W]")
 				|| spe::Input::OnKeyRelease(spe::KeyBoardCode::W))
 			{
-				this->m_ptr_Player->Transform.Teleport(spe::Vector2(761.003, -393.936));
+				this->m_ptr_Player->Transform.Teleport(KANAL_TP_UP_POSITION);
 			}
 		}
 

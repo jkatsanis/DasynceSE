@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Source/SpriteEngine.h"
+#include "Scripts/Macros.h"
 
 #include <functional>
 
