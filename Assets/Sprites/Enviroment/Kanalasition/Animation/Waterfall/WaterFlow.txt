@@ -1,0 +1,7 @@
+WaterFlow
+8039
+True
+0.000000;Assets\Sprites\Enviroment\\Kanalasition\Animation\Waterfall\WaterFall_1.png
+20.000000;Assets\Sprites\Enviroment\\Kanalasition\Animation\Waterfall\WaterFall_2.png
+20.000000;Assets\Sprites\Enviroment\\Kanalasition\Animation\Waterfall\WaterFall_3.png
+20.000000;Assets\Sprites\Enviroment\\Kanalasition\Animation\Waterfall\WaterFall_2.png

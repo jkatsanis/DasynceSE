@@ -9,6 +9,7 @@
 #include "Scenes/computer_room/ComputerRoom.h"
 #include "Scripts/Enemy/EnemyHandler.h"
 #include "Scripts/Gen/LightFlickering.h"
+#include "Scripts/Gen/Waterflow.h"
 
 class Game : public spe::IScript
 {		
@@ -19,6 +20,7 @@ private:
 	ComputerRoom m_ComputerRoom;
 	EnemyHandler m_EnemyHandler;
 	LightFlickering m_LightFlickering;
+	Waterflow m_WaterFlow;
 
 	spe::Sprite* m_Player;
 

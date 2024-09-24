@@ -1,0 +1,7 @@
+WaterFlow
+8040
+True
+0.000000;Assets\Sprites\Enviroment\Kanalasition\\Animation\WaterRight\WaterRight_1.png
+20.000000;Assets\Sprites\Enviroment\Kanalasition\Animation\\WaterRight\WaterRight_2.png
+20.000000;Assets\Sprites\Enviroment\Kanalasition\Animation\\WaterRight\WaterRight_3.png
+20.000000;Assets\Sprites\Enviroment\Kanalasition\\Animation\WaterRight\WaterRight_1.png

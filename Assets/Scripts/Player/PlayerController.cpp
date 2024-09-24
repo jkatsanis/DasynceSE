@@ -23,6 +23,7 @@ void PlayerController::Start(spe::EngineConfig& game)
 
 	this->HealthBar.Start(100, game, this->ptr_Player);
 	this->HealthBar.DontDeleteOnSceneSwap(game);
+
 }
 
 void PlayerController::Update()
@@ -77,10 +78,10 @@ void PlayerController::LeftRight()
 {
 	if (spe::Input::OnKeyHold(spe::KeyBoardCode::A))
 	{
-		if (this->m_Slide.controlWalkCondition(spe::KeyBoardCode::A))
-		{
-			return;
-		}
+		//if (this->m_Slide.controlWalkCondition(spe::KeyBoardCode::A))
+		//{
+		//	return;
+		//}
 
 		this->ptr_Player->Transform.SetScale(spe::Vector2(-this->m_Scale.X, this->m_Scale.Y));
 
@@ -91,10 +92,10 @@ void PlayerController::LeftRight()
 	}
 	if (spe::Input::OnKeyHold(spe::KeyBoardCode::D))
 	{
-		if (this->m_Slide.controlWalkCondition(spe::KeyBoardCode::D))
-		{
-			return;
-		}
+		//if (this->m_Slide.controlWalkCondition(spe::KeyBoardCode::D))
+		//{
+		//	return;
+		//}
 
 		this->ptr_Player->Transform.SetScale(spe::Vector2(this->m_Scale.X, this->m_Scale.X));
 

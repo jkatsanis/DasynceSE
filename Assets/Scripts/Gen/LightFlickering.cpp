@@ -48,7 +48,6 @@ void LightFlickering::Update(spe::EngineConfig& cnfg)
 	{
 		madebig = true;
 		light->Light.SetRadius(radius);
-		spe::Log::LogString("Fliuck on");
 		timer = 0.0f;
 		return;
 	}
@@ -58,7 +57,6 @@ void LightFlickering::Update(spe::EngineConfig& cnfg)
 		madebig = false;
 		flick = true;
 
-		spe::Log::LogString("Fliuck");
 		light->Light.SetRadius(0);
 		timer = 0.0f;
 	}

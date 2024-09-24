@@ -18,6 +18,8 @@ void Game::Start()
 	this->m_EnemyHandler.Start(this->EngineConfig);
 
 	this->m_LightFlickering.Start(this->EngineConfig);
+
+	this->m_WaterFlow.Start(this->EngineConfig);
 }
 
 void Game::OnStop()
