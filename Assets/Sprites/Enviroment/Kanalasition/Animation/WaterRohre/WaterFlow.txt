@@ -1,0 +1,6 @@
+WaterFlow
+8169
+True
+0.000000;Assets\Sprites\Enviroment\Kanalasition\Animation\\WaterRohre\Water_1.png
+20.000000;Assets\Sprites\Enviroment\Kanalasition\Animation\\WaterRohre\Water_2.png
+20.000000;Assets\Sprites\Enviroment\Kanalasition\Animation\\WaterRohre\Water_1.png
