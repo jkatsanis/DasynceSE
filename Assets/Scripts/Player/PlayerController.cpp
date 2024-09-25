@@ -23,7 +23,6 @@ void PlayerController::Start(spe::EngineConfig& game)
 
 	this->HealthBar.Start(100, game, this->ptr_Player);
 	this->HealthBar.DontDeleteOnSceneSwap(game);
-
 }
 
 void PlayerController::Update()

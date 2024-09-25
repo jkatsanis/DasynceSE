@@ -15,6 +15,8 @@ private:
 	int m_TotalHealth;
 
 public:
+	Healthbar() = default;
+
 	void DontDeleteOnSceneSwap(spe::EngineConfig& cnfg);
 
     // Can get called on start by the game/sub class
