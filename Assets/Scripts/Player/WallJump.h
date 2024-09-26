@@ -13,6 +13,8 @@ private:
 	bool m_on_wall;
 
 public:
+	WallJump() = default;
+
 	void start(spe::Sprite* player);
 
 	void update(const bool& is_grounded);

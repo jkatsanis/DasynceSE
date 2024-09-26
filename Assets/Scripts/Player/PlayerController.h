@@ -29,9 +29,10 @@ private:
 	void Jump();
 	void DownAttack();
 
-	PlayerController() = default;
 
 public:
+	PlayerController() = default;
+
 	spe::Sprite* ptr_Player;
 	Healthbar HealthBar;
 

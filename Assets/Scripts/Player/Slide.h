@@ -24,6 +24,8 @@ private:
 	bool slideCondition(const bool& is_walking);
 
 public:
+	Slide() = default;
+
 	void start(spe::Sprite* player);
 
 	void update(const bool& is_walking);
