@@ -86,7 +86,7 @@ void spe::Engine::UpdateComponents()
 
 		this->m_Window.DrawGame(sprite, &this->m_SceneHandler.LightRepository.GetShader(), false);
 	}
-	this->m_SceneHandler.LightRepository.UpdateArrays();
+	 this->m_SceneHandler.LightRepository.UpdateArrays();
 
 	this->m_Window.Display();
 }
