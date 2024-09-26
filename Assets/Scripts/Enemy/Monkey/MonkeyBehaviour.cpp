@@ -7,7 +7,7 @@ void MonkeyBehaviour::Start(spe::EngineConfig& cnfg)
 	this->m_ptr_Config = &cnfg;
 
 	// Spawn monkeys
-	this->SpawnMonkey(spe::Vector2(0, 0));
+//	this->SpawnMonkey(spe::Vector2(0, 0));
 }
 
 void MonkeyBehaviour::Update()
