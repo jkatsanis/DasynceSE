@@ -25,6 +25,9 @@ private:
 	spe::Sprite* m_Player;
 
 public:
+
+	Game() = default;
+
 	spe::EngineConfig EngineConfig;
 	
 	// Gets called on start of the engine

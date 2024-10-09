@@ -25,5 +25,5 @@ public:
     void Start(spe::EngineConfig& cnfg);
 
     // Can get called 1 time per frame by the game/sub class
-    void Update(spe::EngineConfig& cnfg);
+    void Update();
 };

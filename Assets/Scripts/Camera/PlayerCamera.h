@@ -12,12 +12,14 @@ private:
 	float m_Timer;
 
 public:
-   // Can get called on start by the game/sub class
-   void Start(spe::Camera* ptr, const spe::Sprite* pl);
+	PlayerCamera() = default;
 
-   // Can get called 1 time per frame by the game/sub class
-   void Update();
+    // Can get called on start by the game/sub class
+    void Start(spe::Camera* ptr, const spe::Sprite* pl);
 
-   spe::Camera* GetCamera() const { return m_ptr_Camera; }
+    // Can get called 1 time per frame by the game/sub class
+    void Update();
+
+    spe::Camera* GetCamera() const { return m_ptr_Camera; }
 
 };

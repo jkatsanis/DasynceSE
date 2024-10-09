@@ -21,7 +21,7 @@ void Monkey::Attack()
 			direction = -1;
 		}
 
-		spe::Physics::AddForce(controller.ptr_Player, spe::Vector2(direction, 0), 2000);
+		spe::Physics::AddForce(controller.ptr_Player, spe::Vector2((float)direction, 0.0f), 2000);
 		this->m_ApplyForce = false;
 		this->m_ForceCooldown = 0.0f;
 		return;

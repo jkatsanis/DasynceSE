@@ -17,7 +17,7 @@ void Game::Start()
 
 	this->m_EnemyHandler.Start(this->EngineConfig);
 
-//	this->m_LightFlickering.Start(this->EngineConfig);
+	this->m_LightFlickering.Start(this->EngineConfig);
 
 	this->m_WaterFlow.Start(this->EngineConfig);
 }
@@ -61,7 +61,7 @@ void Game::Update()
 	this->m_EnemyHandler.Update();	
 
 	// Light animations
-	// this->m_LightFlickering.Update(EngineConfig);
+	this->m_LightFlickering.Update();
 
 
 	if (this->EngineConfig.ptr_SceneHandler->CurrentScene == "scene 1")

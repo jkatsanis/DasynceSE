@@ -12,6 +12,8 @@ private:
 	spe::EngineConfig* m_ptr_Game;
 
 public:
+	LevelUI() = default;
+
 	bool ReadingNote;
 
 	void Update(std::function<void(const std::string&)> OnSceneChange);
