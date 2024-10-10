@@ -1,6 +1,2 @@
 highestIndex
-<<<<<<< HEAD
-8212
-=======
-8509
->>>>>>> 1b7bba0a4cb38fc704edea20ce020a0d6d841cd6
+154

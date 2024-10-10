@@ -1,0 +1,2 @@
+TransformPoxX;TransformPosY;Zoom;Speed
+3739.453857;2042.949707;1.269999;2000.000000
