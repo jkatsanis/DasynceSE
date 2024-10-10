@@ -3,4 +3,5 @@ WaterFlow
 True
 0.000000;Assets\Sprites\Enviroment\Kanalasition\Animation\\WaterRohre\Water_1.png
 20.000000;Assets\Sprites\Enviroment\Kanalasition\Animation\\WaterRohre\Water_2.png
+20.000000;Assets\Sprites\\Enviroment\Kanalasition\Animation\WaterRohre\Water_3.png
 20.000000;Assets\Sprites\Enviroment\Kanalasition\Animation\\WaterRohre\Water_1.png
