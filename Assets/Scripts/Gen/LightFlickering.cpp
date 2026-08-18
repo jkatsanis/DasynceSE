@@ -13,18 +13,22 @@ void LightFlickering::Start(spe::EngineConfig& cnfg)
 
 void LightFlickering::Update()
 {
+	if (this->lights.size() == 0)
+	{
+		return;
+	}
 	if (alltimer > 1.0f)
 	{
 		alltimer = 0.0f;
 
 		if (light != nullptr)
 		{
-			this->light->Light.SetRadius((float)radius);
+			this->light->Light.SetRadius(radius);
 		}
 
-		this->light = this->lights.at((size_t)spe::GameUtils::Random(0, int32_t(this->lights.size() - 1)));
+		this->light = this->lights.at(size_t(spe::GameUtils::Random(0, int32_t(this->lights.size() - 1))));
 		
-		radius = (int)this->light->Light.GetRadius();
+		radius = this->light->Light.GetRadius();
 
 	}
 
@@ -47,7 +51,7 @@ void LightFlickering::Update()
 	if (timer < 1.0f && !madebig)
 	{
 		madebig = true;
-		light->Light.SetRadius((float)radius);
+		light->Light.SetRadius(radius);
 		timer = 0.0f;
 		return;
 	}

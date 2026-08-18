@@ -1,4 +1,10 @@
 name;vecpos;transformPosX;transformPosY;ScaleX;ScaleY;filepath;boxColliderWidthLeftOrRightX;boxColliderWidthLeftOrRighY;boxColliderHeightUpOrDownX;boxColliderHeightUpOrDownY;boxColliderExists;solid;sortingLayer;gravity;mass;physicsBodyExists;id;parentId;nextPosX;nextPosY;lastPosX;lastPosY;listPos;highestChild;positionToParentX;positionToParentY;animatorExists;prefabExist;loadInMemory;pathToPrefab;render;friction;useairfriction;controller
-S|Player;0;-594.949524;44.009926;4.000000;4.000000;Assets\Sprites\Player\player.png;0;0.000000;0.000000;0.000000;0.000000;True;True;6;1200.000000;1.000000;True;8125;0;0;0;0;0;listpos;childCount;37.446129;-642.224792;True;True;True;Assets\Player.prfb;Player;False;100.000000;200.000000;True;1.000000;1.000000;1.000000;True;6.000000;True;True
-A|Assets\Sprites\Player\Animations\idle\idle.txt
-A|Assets\Sprites\Player\Animations\run_v2\runv2.txt
+S|Player;0;-746.067993;-180.967636;4.000000;4.000000;Assets/Sprites/Player/player.png;0;54.951172;-31.613403;68.013123;0.000000;True;True;6;1700.000000;1.000000;True;11634;0;0;0;0;0;listpos;childCount;37.446129;-642.224792;True;True;True;Assets\Player.prfb;Player;False;100.000000;200.000000;True;1.000000;1.000000;1.000000;True;6.000000;True;True
+A|Assets/Sprites/Player/Animations/dash/dash.txt
+A|Assets/Sprites/Player/Animations/run_v2/runv2.txt
+A|Assets/Sprites/Player/Animations/climb/climb.txt
+A|Assets/Sprites/Player/Animations/idle/idle.txt
+P|False;30.000000;40;3;10.000000;100.000000;10.000000;0.000000;1.000000;1.500000;30.000000;70.000000;0.000000;-1.000000;180.000000;-20.000000;70.000000;77;57;52;255;87;67;59;0;3.000000;6.000000;1.000000;2.000000;0.000000;360.000000;0.000000;0.000000;0.000000;60.000000;0.000000;False;True;none
+M|DropFloor;Assets/Audio/Sounds/land.mp3;Sound;False;50.159996;1.000000;False;350.000000;4.000000;False;-1,-1
+M|DropWater;Assets/Audio/Sounds/splash.mp3;Sound;False;100.000000;1.400000;False;350.000000;4.000000;False;-1,-1
+M|Dash;Assets/Audio/Sounds/dash.mp3;Sound;False;100.000000;1.000000;False;350.000000;4.000000;False;-1,-1

@@ -6,6 +6,7 @@ void Slide::animationControl(const bool& is_walking)
 {
 	if (this->slideCondition(is_walking))
 	{
+		this->m_ptr_dash_sound->Play();
 		this->m_ptr_player->Animator.Stop("runv2");
 		this->m_ptr_player->Animator.Play("dash");
 	}
@@ -43,6 +44,8 @@ bool Slide::controlWalkCondition(spe::KeyBoardCode direction)
 void Slide::start(spe::Sprite* player)
 {
 	this->m_ptr_player = player;
+	this->m_ptr_dash_sound = this->m_ptr_player->Audio.GetAudioByName("Dash");
+	this->m_ptr_dash_sound->Load();
 
 	this->m_slide_time = this->m_ptr_player->Animator.Animations["dash"].GetAnimationTime() / 100;
 
@@ -58,17 +61,15 @@ void Slide::update(const bool& is_walking)
 
 	if (this->slideCondition(is_walking))
 	{
-		this->m_ptr_player->Physicsbody.Velocity.X = 0;
-		const float direction = (this->m_ptr_player->Transform.GetScale().X < 0.0f) ? -1.0f : 1.0f;
-		spe::Physics::AddForce(this->m_ptr_player, spe::Vector2(direction, 0), SLIDE_FORCE);
 		this->m_sliding = true;
-
 		this->m_dash_key = (ad) ? DashKey::A : DashKey::D;
-
 	}
 	if (this->m_sliding)
 	{
-		this->m_ptr_player->Physicsbody.Velocity.Y = 0;
+
+		const float direction = (this->m_ptr_player->Transform.GetScale().X < 0.0f) ? -1.0f : 1.0f;
+		this->m_ptr_player->Physicsbody.Velocity.X = direction * SLIDE_FORCE;
+
 		this->m_time_slided += spe::Time::s_DeltaTime;
 		if (this->m_time_slided >= this->m_slide_time)
 		{

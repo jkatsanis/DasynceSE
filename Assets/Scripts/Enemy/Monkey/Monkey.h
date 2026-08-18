@@ -2,28 +2,29 @@
 
 // Included from the editor-src
 #include <Source/SpriteEngine.h>
-#include "Scripts/General/Helthbar/Healthbar.h"
+#include "Scripts/General/Helthbar/PlayerHealthbar.h"
 #include "Scripts/Player/PlayerController.h"
+#include "Scripts/Enemy/IEnemy.h"
 
 #define MONKEY_SPEED 150
-#define ATTACK_COOLDOWN 0.5f
+#define MONKEY_ATTACK_COOLDOWN 0.5f
 
-class Monkey : public spe::IScript
+class Monkey : public spe::IScript, public IEnemy
 {
 private:
-    spe::Sprite* m_MonkeySprite = nullptr;
-    Healthbar m_Healthbar;
-    float m_AttackCooldown;
-    bool m_ApplyForce;
-    float m_ForceCooldown;
+    float m_AttackCooldown = 0.0f;
+    bool m_ApplyForce = false;
+    float m_ForceCooldown = 0.0f;
+    bool m_InRange = false;
 
-    void Attack();
+    void Attack() override;
 
 public:
     Monkey() = default;
 
-    void Start(spe::EngineConfig& config, spe::Sprite* sprite); 
+    void Start(spe::EngineConfig& config, spe::Sprite* sprite) override;
 
-    // Can get called 1 time per frame by the game/sub class
-    void Update();
+    void Update() override;
+
+    void TakeDamage(int damage) override;
 };

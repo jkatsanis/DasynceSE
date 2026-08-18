@@ -7,3 +7,9 @@ computer-teleport
 kanal-teleport
 Light
 water
+laser
+Ladder
+KillZone
+StorageRoom-teleport
+Potion
+Enemy

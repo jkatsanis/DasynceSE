@@ -12,6 +12,7 @@ private:
 	float m_Timer;
 
 public:
+
 	PlayerCamera() = default;
 
     // Can get called on start by the game/sub class
@@ -21,5 +22,4 @@ public:
     void Update();
 
     spe::Camera* GetCamera() const { return m_ptr_Camera; }
-
 };

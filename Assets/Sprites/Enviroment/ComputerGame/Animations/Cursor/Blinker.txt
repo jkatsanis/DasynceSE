@@ -1,0 +1,6 @@
+Blinker
+2349
+True
+0.000000;Assets\Sprites\\Enviroment\ComputerGame\Animations\Cursor\On.png
+40.000000;Assets\Sprites\\Enviroment\ComputerGame\Animations\Cursor\off.png
+40.000000;Assets\Sprites\\Enviroment\ComputerGame\Animations\Cursor\On.png

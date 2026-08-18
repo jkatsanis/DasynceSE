@@ -1,0 +1,7 @@
+smoke
+4781
+True
+True
+0.000000;Assets/Sprites/Enviroment/MachineryRoom/Animations/smoke/smoke1.png
+18.000000;Assets/Sprites/Enviroment/MachineryRoom/Animations/smoke/smoke2.png
+23.000000;Assets/Sprites/Enviroment/MachineryRoom/Animations/smoke/smoke1.png

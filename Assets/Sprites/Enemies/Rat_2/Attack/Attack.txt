@@ -1,0 +1,8 @@
+Attack
+1893
+True
+0.000000;Assets\\Sprites\Enemies\Rat_2\Attack\RAT_ATTACK_8.png
+20.000000;Assets\\Sprites\Enemies\Rat_2\Attack\RAT_ATTACK_5.png
+20.000000;Assets\\Sprites\Enemies\Rat_2\Attack\RAT_ATTACK_6.png
+20.000000;Assets\\Sprites\Enemies\Rat_2\Attack\RAT_ATTACK_7.png
+20.000000;Assets\\Sprites\Enemies\Rat_2\Attack\RAT_ATTACK_8.png

@@ -1,0 +1,7 @@
+water
+9848
+True
+True
+0.000000;Assets/Sprites/Enviroment/ExpirementRoom/Animations/Water/1.png
+20.000000;Assets/Sprites/Enviroment/ExpirementRoom/Animations/Water/2.png
+20.000000;Assets/Sprites/Enviroment/ExpirementRoom/Animations/Water/1.png

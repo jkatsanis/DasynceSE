@@ -5,23 +5,25 @@
 
 #include "Scripts/Player/PlayerController.h"
 #include "Monkey.h"
+#include "Scripts/Enemy/IEnemyBehaviour.h"
 
-class MonkeyBehaviour : public spe::IScript
+class MonkeyBehaviour : public spe::IScript, public IEnemyBehaviour
 {
 private:
     std::vector<Monkey> m_Monkeys;
-    spe::EngineConfig* m_ptr_Config;
 
 public:
     MonkeyBehaviour() = default;
 
 	 // Can get called on start by the game/sub class
-    void Start(spe::EngineConfig& cnfg);
+    void Start(spe::EngineConfig& cnfg, const std::string& scene) override;
 
     // Can get called 1 time per frame by the game/sub class
-    void Update();
+    void Update() override;
 
-    void SpawnMonkey(const spe::Vector2& position);
+    void Spawn(const spe::Vector2& position) override;
 
-    void OnSceneChange();
+    void OnSceneChange() override;
+
+    bool DamageBySprite(spe::Sprite* sprite, int damage);
 };

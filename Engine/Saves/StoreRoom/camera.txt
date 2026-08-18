@@ -1,0 +1,2 @@
+TransformPoxX;TransformPosY;Zoom;Speed
+508.648346;278.227112;3.255998;2000.000000

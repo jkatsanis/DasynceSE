@@ -2,7 +2,7 @@
 
 #include "Source/SpriteEngine.h"
 
-#define SLIDE_FORCE 3000.0f
+#define SLIDE_FORCE 1200.0f
 
 enum class DashKey
 {
@@ -15,6 +15,7 @@ class Slide : public spe::IScript
 private:
 	spe::Sprite* m_ptr_player;
 	DashKey m_dash_key;
+	spe::Audio* m_ptr_dash_sound;
 
 	float m_slide_time;
 	float m_time_slided;

@@ -9,7 +9,7 @@ public:
     Waterflow() = default;
 
 	 // Can get called on start by the game/sub class
-    void Start(spe::EngineConfig& cnfg);
+    void Start(spe::EngineConfig& cnfg, const std::string& scene) override;
 
     // Can get called 1 time per frame by the game/sub class
     void Update();

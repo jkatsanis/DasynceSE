@@ -10,6 +10,13 @@
 
 
 ## How to build 
+
+-❗ **FOR LINUX INSTALL THESE DEPENDENCIES** 
+
+```powershell
+sudo apt update && sudo apt install -y build-essential cmake git libx11-dev libxext-dev libxrandr-dev libxinerama-dev libxi-dev libxcursor-dev libgl1-mesa-dev libglu1-mesa-dev libudev-dev libopenal-dev libvorbis-dev libflac-dev libfreetype6-dev
+```
+
 - mkdir build
 - cd build
 - cmake ..

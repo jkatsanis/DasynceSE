@@ -8,6 +8,23 @@ void LevelUI::Start(spe::EngineConfig& config)
 
 	spe::Sprite* woa = config.ptr_Sprites->GetByName("Water_1");
 	woa->Animator.Play("WaterFlow");
+
+	// Spawn enemys of the first scene
+	EnemyHandler& handler = EnemyHandler::GetInstance();
+	
+	for (size_t i = 0; i < LevelUI::s_FirstSceneEnemys.size(); i++)
+	{
+		EnemySpawn& spawn = LevelUI::s_FirstSceneEnemys[i];
+
+		if (spawn.Type == EnemyType::Monkey)
+		{
+			handler.MonkeyBehaviourObject.Spawn(spawn.Position);
+		}
+		else if (spawn.Type == EnemyType::Rat)
+		{
+			handler.RatBehaviourObject.Spawn(spawn.Position);
+		}
+	}
 }
 
 void LevelUI::Update(std::function<void(const std::string&)> OnSceneChange)
@@ -17,17 +34,9 @@ void LevelUI::Update(std::function<void(const std::string&)> OnSceneChange)
 		spe::Sprite* spr = this->m_ptr_Player->Collider.CollidedWithTag("Note-Main");
 		if (spr != nullptr)
 		{
-		   spe::Vector2 pos = spr->Transform.GetPosition();
-		   pos.Y += 100;
-		   UI::SetCursorCamera(pos);
-
-
-		//	std::cout << spr->transform.GetPosition().y << std::endl;
-			// ImGui::SetCursorPos(ImVec2(spr->transform.GetPosition().x + 960, 540));
-
 			UI::SetFontScale(D_SCALE + 2.0f);
 
-			if (UI::Button("Read note [E]")
+			if (UI::Button("Read note [E]", spr)
 				||spe::Input::OnKeyRelease(spe::KeyBoardCode::E))
 			{
 				this->ReadingNote = true;
@@ -53,13 +62,9 @@ void LevelUI::Update(std::function<void(const std::string&)> OnSceneChange)
 		spe::Sprite* spr2 = this->m_ptr_Player->Collider.CollidedWithName("Kanal_Down");
 		if (spr2 != nullptr)
 		{
-			spe::Vector2 pos = spr2->Transform.GetPosition();
-			pos.Y += 100;
-
-			UI::SetCursorCamera(pos);
 			UI::SetFontScale(D_SCALE + 2.0f);
 
-			if (UI::Button("Climb Down [S]")
+			if (UI::Button("Climb Down [S]", spr2)
 				|| spe::Input::OnKeyRelease(spe::KeyBoardCode::S))
 			{
 				this->m_ptr_Player->Transform.Teleport(spe::Vector2(698.76f, -1185.32f));
@@ -69,13 +74,9 @@ void LevelUI::Update(std::function<void(const std::string&)> OnSceneChange)
 		spe::Sprite* spr3 = this->m_ptr_Player->Collider.CollidedWithName("Up_teleport");
 		if (spr3 != nullptr)
 		{
-			spe::Vector2 pos = spr3->Transform.GetPosition();
-			pos.Y += 100;
-
-			UI::SetCursorCamera(pos);
 			UI::SetFontScale(D_SCALE + 2.0f);
 
-			if (UI::Button("Climb Up [W]")
+			if (UI::Button("Climb Up [W]", spr3)
 				|| spe::Input::OnKeyRelease(spe::KeyBoardCode::W))
 			{
 				this->m_ptr_Player->Transform.Teleport(KANAL_TP_UP_POSITION);
@@ -85,13 +86,9 @@ void LevelUI::Update(std::function<void(const std::string&)> OnSceneChange)
 		spe::Sprite* spr4 = this->m_ptr_Player->Collider.CollidedWithName("computer-teleport");
 		if (spr4 != nullptr)
 		{
- 			spe::Vector2 pos = spr4->Transform.GetPosition();
-			pos.Y += 100;
-
-			UI::SetCursorCamera(pos);
 			UI::SetFontScale(D_SCALE + 2.0f);
 
-			if (UI::Button("Climb Up [W]")
+			if (UI::Button("Go To Computer Room [W]", spr4)
 				|| spe::Input::OnKeyRelease(spe::KeyBoardCode::W))
 			{
 				// Change scene
@@ -101,3 +98,9 @@ void LevelUI::Update(std::function<void(const std::string&)> OnSceneChange)
 	}
 }
 
+std::vector<EnemySpawn> LevelUI::s_FirstSceneEnemys = {
+	{ spe::Vector2(149.434f, -230.983f), EnemyType::Monkey },
+	{ spe:: Vector2(1002.83f, -252.627f), EnemyType::Rat },
+	{ spe::Vector2(1086.27f, -1506.32f), EnemyType::Monkey },
+	// { spe::Vector2(40.0f, 45.0f), EnemyType::Rat }
+};

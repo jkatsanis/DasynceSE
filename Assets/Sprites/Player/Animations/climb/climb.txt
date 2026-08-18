@@ -1,0 +1,6 @@
+climb
+11634
+True
+False
+0.000000;Assets/Sprites/Player/Animations/climb/Back_1.png
+34.000000;Assets/Sprites/Player/Animations/climb/Back_2.png

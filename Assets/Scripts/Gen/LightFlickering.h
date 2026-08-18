@@ -14,7 +14,7 @@ private:
     bool madebig;
     float bigtimer;
     float alltimer;
-    int radius;
+    float radius;
     
     std::vector<spe::Sprite*> lights;
 

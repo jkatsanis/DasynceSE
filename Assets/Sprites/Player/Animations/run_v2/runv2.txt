@@ -1,7 +1,8 @@
 runv2
-8312
+11634
 True
-0.000000;assets\Sprites\Player\Animations\run_v2\run1.png
-15.000000;assets\Sprites\Player\Animations\run_v2\run2.png
-15.000000;assets\Sprites\Player\Animations\run_v2\run3.png
-15.000000;assets\Sprites\Player\Animations\run_v2\run1.png
+False
+0.000000;Assets/Sprites/Player/Animations/run_v2/run1.png
+15.000000;Assets/Sprites/Player/Animations/run_v2/run2.png
+15.000000;Assets/Sprites/Player/Animations/run_v2/run3.png
+15.000000;Assets/Sprites/Player/Animations/run_v2/run1.png

@@ -4,6 +4,8 @@
 #include <Source/SpriteEngine.h>
 
 #include "Scripts/Macros.h"
+#include "Scripts/General/Globals.h"
+#include "Audio/Audio.h"
 
 #include "functional"
 
@@ -11,8 +13,15 @@ class ComputerRoom : public spe::IScript
 {
 private:
 	spe::Sprite* m_ptr_Player;
-public:
+	spe::Sprite* m_ptr_Server;
+    spe::EngineConfig* m_ptr_Config;
+    std::string m_FlipMessage;
+    bool m_IsEneryOn;
+    bool m_IsDoorOpen;
 
+    void SetPowerCrystal();
+
+public:
 	ComputerRoom() = default;
 
     // Can get called on start by the game/sub class

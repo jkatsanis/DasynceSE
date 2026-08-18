@@ -1,0 +1,7 @@
+Idle
+1893
+True
+0.000000;Assets\Sprites\\Enemies\Rat_2\Idle\RAT_IDLE_1.png
+20.000000;Assets\Sprites\\Enemies\Rat_2\Idle\RAT_IDLE_2.png
+20.000000;Assets\Sprites\\Enemies\Rat_2\Idle\RAT_IDLE_3.png
+15.000000;Assets\Sprites\\Enemies\Rat_2\Idle\RAT_IDLE_1.png

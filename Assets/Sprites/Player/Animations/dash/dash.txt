@@ -1,5 +1,8 @@
 dash
-50
+11634
 False
-0.000000;assets\Sprites\transparent.png
-60.000000;assets\Sprites\transparent.png
+False
+0.000000;Assets/Sprites/Player/Animations/dash/dash_1.png
+10.000000;Assets/Sprites/Player/Animations/dash/dash_2.png
+20.000000;Assets/Sprites/Player/Animations/dash/dash_3.png
+10.000000;Assets/Sprites/Player/Animations/dash/dash_1.png

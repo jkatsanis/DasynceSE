@@ -1,0 +1,8 @@
+open
+4970
+False
+False
+0.000000;Assets/Sprites/Enviroment/ComputerRoom/Door/Door.png
+12.000000;Assets/Sprites/Enviroment/ComputerRoom/Door/open_1.png
+16.000000;Assets/Sprites/Enviroment/ComputerRoom/Door/open_2.png
+18.000000;Assets/Sprites/Enviroment/ComputerRoom/Door/open_3.png

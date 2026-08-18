@@ -1,0 +1,4 @@
+name;vecpos;transformPosX;transformPosY;ScaleX;ScaleY;filepath;boxColliderWidthLeftOrRightX;boxColliderWidthLeftOrRighY;boxColliderHeightUpOrDownX;boxColliderHeightUpOrDownY;boxColliderExists;solid;sortingLayer;gravity;mass;physicsBodyExists;id;parentId;nextPosX;nextPosY;lastPosX;lastPosY;listPos;highestChild;positionToParentX;positionToParentY;animatorExists;prefabExist;loadInMemory;pathToPrefab;render;friction;useairfriction;controller
+S|Rat_2;0;30.394020;-64.795990;4.000000;4.000000;Assets\Sprites\\Enemies\Rat_2\rat.png;0;7.123169;-50.196777;71.090271;2.498291;True;True;4;1200.000000;1.000000;True;1899;-1;0;0;0;0;listpos;childCount;0.000000;0.000000;True;True;True;Assets\Sprites\Enemies\\Rat_2\Rat_2.prfb;Enemy;False;100.000000;200.000000;True;1.000000;1.000000;1.000000;True;0.000000;True;True
+A|Assets\Sprites\Enemies\Rat_2\Idle\Idle.txt
+A|Assets\Sprites\Enemies\Rat_2\Attack\Attack.txt

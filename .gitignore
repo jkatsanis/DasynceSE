@@ -1,2 +1,4 @@
 **/.vs/
 **/build/
+**/Build/
+Engine/Saves/enginepath.txt

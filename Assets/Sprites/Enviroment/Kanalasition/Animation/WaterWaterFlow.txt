@@ -1,6 +1,7 @@
 WaterFlow
 3290
 True
-0.000000;Assets\Sprites\Enviroment\Kanalasition\Animation\Water\Water_1.png
-18.000000;Assets\Sprites\Enviroment\\Kanalasition\Animation\Water\Water_2.png
-23.000000;Assets\Sprites\Enviroment\\Kanalasition\Animation\Water\Water_3.png
+False
+0.000000;Assets/Sprites/Enviroment/Kanalasition/Animation/Water/Water_1.png
+18.000000;Assets/Sprites/Enviroment/Kanalasition/Animation/Water/Water_2.png
+23.000000;Assets/Sprites/Enviroment/Kanalasition/Animation/Water/Water_3.png
